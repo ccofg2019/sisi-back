@@ -1,0 +1,28 @@
+<?php
+
+
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+
+
+/** ROTAS ABERTAS */
+
+
+/** ROTAS FECHADAS */
+Route::middleware('auth:api')->group(function() {
+
+    Route::resource('/users',               'UsersController');
+    Route::resource('/roles',               'RolesController');
+    Route::resource('/occurrence-reports',  'OccurrenceReportsController');
+    Route::resource('/object',              'OccurrenceObjectsController');
+
+});
