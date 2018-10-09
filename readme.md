@@ -12,7 +12,8 @@
 - Composer
 ## Documentação
 
-1. [Requisições](https://github.com/unifg/sisi-back/blob/develop/documetation/readme.md)
+1. [Documentação de Requisições](https://github.com/unifg/sisi-back/blob/develop/documetation/readme.md)
+1. [Diagrama do Banco](https://github.com/unifg/sisi-back/blob/develop/documetation/api-sisi.png)
 
 ## Instalação
 
