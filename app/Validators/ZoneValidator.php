@@ -17,7 +17,7 @@ class ZoneValidator extends LaravelValidator
      *
      * @var array
      */
-    protected $rule = [
+    protected $rules = [
         ValidatorInterface::ZONE_CREATE => [
 
                         'name'          => 'required|max:40',
