@@ -46,3 +46,12 @@
     'email'      => 'required|email|max:150|unique:users,email',   
     'password'   => 'required|max:32|string',   
     'status'     => 'required|in:ATIVO,BLOQUEADO,INATIVO',   
+    
+    
+### List Users
+    url: http://104.131.99.239:5050/api/mobile/users
+    header: 
+        bearer: Content-Type:application/json
+        Accept:application/json
+        Authorization:Bearer {{token}}
+
