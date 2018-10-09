@@ -26,7 +26,6 @@ class UserTransformer extends TransformerAbstract
 
             'name'          => $model->name,
             'email'         => $model->email,
-            'password'      => $model->password,
             'cpf'           => $model->cpf,
             'birthdate'     => $model->birthdate,
             'gender'        => $model->gender,

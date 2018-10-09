@@ -24,12 +24,11 @@ class UserValidator extends LaravelValidator
             'birthdate'      => 'required|date',
             'gender'         => 'required|in:MASCULINO,FEMININO,TRANS_MASC,TRANS_FEM,NAO_DECLARADO',
             'skin_color'     => 'required|in:BRANCO,PARDO,NEGRO,INDIGENA,AMARELO,NAO_DECLARADO',
-            'cellphone'      => 'string',
+            'cellphone'      => 'required|string',
             'phone'          => 'string',
             'email'    		 => 'required|email|max:150|unique:users,email',
             'password'       => 'required|max:32|string',
-            'status'  	 	 => 'integer|between:0,1',
-            'role'           => 'integer|between:0,2',
+            'status'  	 	 => 'required|in:ATIVO,BLOQUEADO,INATIVO',
         ],
         ValidatorInterface::RULE_UPDATE => [
             'name' 		 	 => 'max:100',
@@ -41,8 +40,7 @@ class UserValidator extends LaravelValidator
             'phone'          => 'string',
             'email'    		 => 'email|max:150|unique:users,email',
             'password'       => 'max:32|string',
-            'status'  	 	 => 'integer|between:0,1',
-            'role'           => 'integer|between:0,2',
+            'status'  	 	 => 'sometimes|in:ATIVO,BLOQUEADO,INATIVO',
         ],
     ];
 }

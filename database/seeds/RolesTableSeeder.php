@@ -12,8 +12,9 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         $roles = [
-            ['name' => 'Inspetor',              'department' => 'DEN'],
-            ['name' => 'Diretor',               'department' => 'DEN'],
+            ['name' => 'Usuário Comum',         'department' => ''],
+            ['name' => 'Inspetor',              'department' => 'DFCU'],
+            ['name' => 'Diretor',               'department' => 'DFCU'],
             ['name' => 'Segurança',             'department' => 'DENS'],
             ['name' => 'Inspetor',              'department' => 'DENS'],
             ['name' => 'Inspetor Geral',        'department' => 'DENS'],
@@ -21,6 +22,7 @@ class RolesTableSeeder extends Seeder
             ['name' => 'Superitendente',        'department' => 'DENS'],
             ['name' => 'Investigador',          'department' => 'DIP'],
             ['name' => 'Investigador Chefe',    'department' => 'DIP'],
+            ['name' => 'Superitendente',        'department' => 'DIP'],
         ];
 
         foreach ($roles as $role) {

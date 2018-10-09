@@ -18,7 +18,17 @@ class OccurrenceTypeValidator extends LaravelValidator
      * @var array
      */
     protected $rules = [
-        ValidatorInterface::RULE_CREATE => [],
-        ValidatorInterface::RULE_UPDATE => [],
+        ValidatorInterface::RULE_CREATE => [
+
+            'name'           =>  'required|max:40',
+            'description'    =>  'required|max:250',
+
+        ],
+        ValidatorInterface::RULE_UPDATE => [
+
+            'name'           =>  'max:40',
+            'description'    =>  'max:250',
+
+        ],
     ];
 }
