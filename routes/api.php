@@ -15,7 +15,10 @@
 
 
 /** ROTAS ABERTAS */
-
+//Mobile
+Route::prefix('mobile')->group(function () {
+    Route::post('/users',               'UsersController@mobileStore');
+});
 
 /** ROTAS FECHADAS */
 Route::middleware('auth:api')->group(function() {
