@@ -23,7 +23,7 @@
         Authorization:Bearer {{token}}
     body:
         {
-	        "name": *"string"
+	        "name": *"string",
 	        "cpf": *"string",
 	        "birthdate": *"Y-m-d",
 	        "gender": *"string",
@@ -31,7 +31,8 @@
 	        "cellphone": *"string",
             "phone": "string",
 	        "status": *"string",
-	        "email": *"string"
+	        "email": *"string",
+		"password": *"string",
         }
         
 #### Validações:   
