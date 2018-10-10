@@ -19,7 +19,7 @@ class UserValidator extends LaravelValidator
      */
     protected $rules = [
         ValidatorInterface::RULE_CREATE => [
-            'name' 		 	 => 'required|max:100',
+            'name' 		 	 => 'required|max:250',
             'cpf'            => 'required|max:14|unique:users,cpf',
             'birthdate'      => 'required|date',
             'gender'         => 'required|in:MASCULINO,FEMININO,TRANS_MASC,TRANS_FEM,NAO_DECLARADO',
@@ -31,7 +31,7 @@ class UserValidator extends LaravelValidator
             'status'  	 	 => 'required|in:ATIVO,BLOQUEADO,INATIVO',
         ],
         ValidatorInterface::RULE_UPDATE => [
-            'name' 		 	 => 'max:100',
+            'name' 		 	 => 'max:250',
             'birthdate'      => 'date',
             'gender'         => 'in:MASCULINO,FEMININO,TRANS_MASC,TRANS_FEM,NAO_DECLARADO',
             'skin_color'     => 'in:BRANCO,PARDO,NEGRO,INDIGENA,AMARELO,NAO_DECLARADO',
