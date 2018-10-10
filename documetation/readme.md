@@ -17,6 +17,7 @@
 
 ### Create User
     url: http://104.131.99.239:5050/api/mobile/users
+    method: POST
     header: 
         bearer: Content-Type:application/json
         Accept:application/json
@@ -36,7 +37,7 @@
         }
         
 #### Validações:   
-    'name'       => 'required|max:100'   
+    'name'       => 'required|max:250',
     'cpf'        => 'required|max:14|unique:users,cpf',   
     'birthdate'  => 'required|date',   
     'gender'     => 'required|in:MASCULINO,FEMININO,TRANS_MASC,TRANS_FEM,NAO_DECLARADO',   
@@ -50,8 +51,44 @@
     
 ### List Users
     url: http://104.131.99.239:5050/api/mobile/users
+    method: GET
     header: 
         bearer: Content-Type:application/json
         Accept:application/json
         Authorization:Bearer {{token}}
+	
+### Update User
+    url: http://104.131.99.239:5050/api/users/{id}
+    method: PUT
+    header: 
+        bearer: Content-Type:application/json
+        Accept:application/json
+        Authorization:Bearer {{token}}
+    body:
+        {
+		"id": "integer"
+	        "name": *"string",
+	        "cpf": *"string",
+	        "birthdate": *"Y-m-d",
+	        "gender": *"string",
+	        "skin_color": *"string",
+	        "cellphone": *"string",
+            "phone": "string",
+	        "status": *"string",
+	        "email": *"string",
+		"password": *"string",
+        }
+        
+#### Validações:   
+    'id'	 => 'required|integer',
+    'name'       => 'max:250',  
+    'cpf'        => 'max:14|unique:users,cpf',   
+    'birthdate'  => 'date',   
+    'gender'     => 'in:MASCULINO,FEMININO,TRANS_MASC,TRANS_FEM,NAO_DECLARADO',   
+    'skin_color' => 'in:BRANCO,PARDO,NEGRO,INDIGENA,AMARELO,NAO_DECLARADO',   
+    'cellphone'  => 'string',   
+    'phone'      => 'string',   
+    'email'      => 'email|max:150|unique:users,email',   
+    'password'   => 'max:32|string',   
+    'status'     => 'in:ATIVO,BLOQUEADO,INATIVO', 
 
