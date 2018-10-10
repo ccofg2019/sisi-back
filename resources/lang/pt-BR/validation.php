@@ -119,6 +119,7 @@ return [
     'attributes' => [
         'title'         => 'título',
         'description'   => 'descrição',
+        'cellphone'     => 'celular',
     ],
 
 ];

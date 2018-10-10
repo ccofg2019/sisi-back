@@ -24,7 +24,7 @@ class UserValidator extends LaravelValidator
             'birthdate'      => 'required|date',
             'gender'         => 'required|in:MASCULINO,FEMININO,TRANS_MASC,TRANS_FEM,NAO_DECLARADO',
             'skin_color'     => 'required|in:BRANCO,PARDO,NEGRO,INDIGENA,AMARELO,NAO_DECLARADO',
-            'cellphone'      => 'required|string',
+            'cellphone'      => 'required|string|unique:users,cellphone',
             'phone'          => 'string',
             'email'    		 => 'required|email|max:150|unique:users,email',
             'password'       => 'required|max:32|string',
@@ -32,17 +32,16 @@ class UserValidator extends LaravelValidator
         ],
         ValidatorInterface::RULE_UPDATE => [
             'name' 		 	 => 'max:100',
-            'cpf'            => 'max:14',
             'birthdate'      => 'date',
             'gender'         => 'in:MASCULINO,FEMININO,TRANS_MASC,TRANS_FEM,NAO_DECLARADO',
             'skin_color'     => 'in:BRANCO,PARDO,NEGRO,INDIGENA,AMARELO,NAO_DECLARADO',
             'cellphone'      => 'string',
             'phone'          => 'string',
-            'email'    		 => 'email|max:150',
             'password'       => 'max:32|string',
             'status'  	 	 => 'sometimes|in:ATIVO,BLOQUEADO,INATIVO',
         ],
     ];
+
     /**
      * Set data to validate
      *
@@ -51,13 +50,16 @@ class UserValidator extends LaravelValidator
      */
     public function with(array $data)
     {
-
         if(!empty($data['id'])){
-            $this->rules[ValidatorInterface::RULE_UPDATE]['cpf'] = "max:14|unique:users,cpf".$data['id'];
+            $this->rules[ValidatorInterface::RULE_UPDATE]['email'] = "email|max:150|unique:users,email,".$data['id'];
         }
 
         if(!empty($data['id'])){
-            $this->rules[ValidatorInterface::RULE_UPDATE]['email'] = "email|max:150|unique:users,email".$data['id'];
+            $this->rules[ValidatorInterface::RULE_UPDATE]['cpf'] = "required|max:14|unique:users,cpf,".$data['id'];
+        }
+
+        if(!empty($data['id'])){
+            $this->rules[ValidatorInterface::RULE_UPDATE]['cellphone'] = "string|unique:users,cellphone,".$data['id'];
         }
 
         $this->data = $data;

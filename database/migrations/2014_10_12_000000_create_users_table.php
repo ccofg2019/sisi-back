@@ -17,11 +17,11 @@ class CreateUsersTable extends Migration
             $table->increments('id');
 
             $table->string('name');
-            $table->string('cpf',11);
+            $table->string('cpf',11)->unique();
             $table->date('birthdate');
             $table->enum('gender', ['MASCULINO','FEMININO','TRANS_MASC','TRANS_FEM', 'NAO_DECLARADO']);
             $table->enum('skin_color', ['BRANCO','PARDO','NEGRO','INDIGENA','AMARELO', 'NAO_DECLARADO']);
-            $table->string('cellphone')->nulllabel();
+            $table->string('cellphone')->unique();
             $table->string('phone')->nulllabel();
             $table->enum('status',['ATIVO','BLOQUEADO','INATIVO']);
             $table->string('email')->unique();
