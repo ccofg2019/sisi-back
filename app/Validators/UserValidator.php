@@ -32,15 +32,36 @@ class UserValidator extends LaravelValidator
         ],
         ValidatorInterface::RULE_UPDATE => [
             'name' 		 	 => 'max:100',
-            'cpf'            => 'max:14|unique:users,cpf',
+            'cpf'            => 'max:14',
             'birthdate'      => 'date',
             'gender'         => 'in:MASCULINO,FEMININO,TRANS_MASC,TRANS_FEM,NAO_DECLARADO',
             'skin_color'     => 'in:BRANCO,PARDO,NEGRO,INDIGENA,AMARELO,NAO_DECLARADO',
             'cellphone'      => 'string',
             'phone'          => 'string',
-            'email'    		 => 'email|max:150|unique:users,email',
+            'email'    		 => 'email|max:150',
             'password'       => 'max:32|string',
             'status'  	 	 => 'sometimes|in:ATIVO,BLOQUEADO,INATIVO',
         ],
     ];
+    /**
+     * Set data to validate
+     *
+     * @param array $data
+     * @return $this
+     */
+    public function with(array $data)
+    {
+
+        if(!empty($data['id'])){
+            $this->rules[ValidatorInterface::RULE_UPDATE]['cpf'] = "max:14|unique:users,cpf".$data['id'];
+        }
+
+        if(!empty($data['id'])){
+            $this->rules[ValidatorInterface::RULE_UPDATE]['email'] = "email|max:150|unique:users,email".$data['id'];
+        }
+
+        $this->data = $data;
+
+        return $this;
+    }
 }
