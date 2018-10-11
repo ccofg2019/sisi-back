@@ -27,8 +27,8 @@ class OccurrenceReportTransformer extends TransformerAbstract
 
             'title'                 => $model->title,
             'story'                 => $model->story,
-            'occurrence_date'       => $model->occurence_date,
-            'occurrence_time'       => $model->occurence_time,
+            'occurrence_date'       => $model->occurrence_date,
+            'occurrence_time'       => $model->occurrence_time,
             'coordinates'           => $model->coordinates,
             'police_report'         => $model->police_report,
             'estimated_loss'        => $model->estimated_loss,
@@ -42,9 +42,9 @@ class OccurrenceReportTransformer extends TransformerAbstract
             ],
             'agent'                 => $this->getAgent($model),
             'occurrence_type'       => [
-                'id'            => $model->ocurrence_type->id,
-                'name'          => $model->ocurrence_type->name,
-                'description'   => $model->ocurrence_type->description,
+                'id'            => $model->type->id,
+                'name'          => $model->type->name,
+                'description'   => $model->type->description,
             ],
             'zone'                  => [
                 'id'            => $model->zone->id,

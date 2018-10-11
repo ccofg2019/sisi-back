@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Presenters\OccurrenceReportPresenter;
 use App\Services\Traits\SoftDeletes;
 use App\Transformers\OccurrenceReportTransformer;
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -53,7 +54,7 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
      */
     public function presenter()
     {
-        return OccurrenceReportTransformer::class;
+        return OccurrenceReportPresenter::class;
     }
 
     /**

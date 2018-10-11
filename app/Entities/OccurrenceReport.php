@@ -29,7 +29,7 @@ class OccurrenceReport extends AppModel
         'confidential',
         'user_id',
         'agent_id',
-        'occurrences_type_id',
+        'occurrence_type_id',
         'zone_id'
     ];
 
@@ -75,7 +75,7 @@ class OccurrenceReport extends AppModel
      */
     public function type()
     {
-        return $this->belongsTo(OccurrenceType::class);
+        return $this->belongsTo(OccurrenceType::class, 'occurrence_type_id');
     }
 
     /**
