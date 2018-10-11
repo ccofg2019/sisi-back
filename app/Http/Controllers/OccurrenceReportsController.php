@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Traits\CrudMethods;
 use App\Services\OccurrenceReportService;
+use App\Services\UserService;
 use App\Validators\OccurrenceReportValidator;
+use Illuminate\Http\Request;
 
 /**
  * Class OccurrenceReportsController.
@@ -13,7 +15,9 @@ use App\Validators\OccurrenceReportValidator;
  */
 class OccurrenceReportsController extends Controller
 {
-    use CrudMethods;
+    use CrudMethods {
+        store as public processStore;
+    }
 
     /**
      * @var OccurrenceReportService
@@ -36,5 +40,18 @@ class OccurrenceReportsController extends Controller
     {
         $this->service   = $service;
         $this->validator = $validator;
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function store(Request $request)
+    {
+        $user = UserService::getUser(true);
+
+        app()->request->merge(['user_id' => $user->id]);
+        return $this->processStore($request);
     }
 }

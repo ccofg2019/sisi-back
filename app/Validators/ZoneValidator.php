@@ -18,18 +18,13 @@ class ZoneValidator extends LaravelValidator
      * @var array
      */
     protected $rules = [
-        ValidatorInterface::ZONE_CREATE => [
-
-                        'name'          => 'required|max:40',
-                        'description'   => 'required|max:100',
-
-
-
+        ValidatorInterface::RULE_CREATE => [
+            'name'          => 'required|max:40',
+            'description'   => 'required|max:100',
         ],
-        ValidatorInterface::ZONE_UPDATE => [
-
-                        'name'          => 'max:40',
-                        'description'   => 'max:100',
+        ValidatorInterface::RULE_UPDATE => [
+            'name'          => 'max:40',
+            'description'   => 'max:100',
         ],
     ];
 }
