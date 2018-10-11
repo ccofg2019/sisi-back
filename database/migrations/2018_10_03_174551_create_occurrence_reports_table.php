@@ -34,7 +34,7 @@ class CreateOccurrenceReportsTable extends Migration
             $table->unsignedInteger('agent_id')->index()->nullable();
             $table->foreign('agent_id')->references('id')->on('users');
 
-            $table->unsignedInteger(',')->index();
+            $table->unsignedInteger('occurrence_type_id')->index();
             $table->foreign('occurrence_type_id')->references('id')->on('occurrence_types');
 
             $table->unsignedInteger('zone_id')->index();
