@@ -43,6 +43,17 @@ class UsersController extends Controller
     }
 
     /**
+     * @return array|mixed
+     */
+    public function authenticated()
+    {
+        $user = $this->service->getUser(true);
+//        $this->service->lastLogin($user);
+        return response()->json(['data' => $user]);
+    }
+
+
+    /**
      * @param Request $request
      * @return mixed
      * @throws \Prettus\Validator\Exceptions\ValidatorException
