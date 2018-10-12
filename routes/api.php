@@ -23,7 +23,10 @@ Route::prefix('mobile')->group(function () {
 /** ROTAS FECHADAS */
 Route::middleware('auth:api')->group(function() {
 
+
+    Route::get('/user/authenticated',       'UsersController@authenticated');
     Route::resource('/users',               'UsersController');
+
     Route::resource('/roles',               'RolesController');
     Route::resource('/occurrence-reports',  'OccurrenceReportsController');
     Route::resource('/occurrence-types',    'OccurrenceTypesController');
