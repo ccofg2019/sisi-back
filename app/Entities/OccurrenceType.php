@@ -39,6 +39,7 @@ class OccurrenceType extends Model implements Transformable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+
     public function occurrences()
     {
         return $this->hasMany(OccurrenceReport::class);

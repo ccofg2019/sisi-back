@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(OccurrenceTypeTableSeeder::class);
         $this->call(ZonesTableSeeder::class);
+        $this->call(OccurranceObjectsSeeder::class);
     }
 }
