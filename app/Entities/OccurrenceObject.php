@@ -8,6 +8,7 @@ namespace App\Entities;
  *
  * @package namespace App\Entities;
  */
+
 class OccurrenceObject extends AppModel
 {
 
@@ -16,7 +17,8 @@ class OccurrenceObject extends AppModel
      *
      * @var array
      */
-    protected $fillable = [
+
+       protected $fillable = [
         'description'
     ];
 
@@ -25,6 +27,7 @@ class OccurrenceObject extends AppModel
      *
      * @var array
      */
+
     protected $dates = [
         'created_at',
         'updated_at',
