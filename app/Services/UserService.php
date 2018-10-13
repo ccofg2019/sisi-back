@@ -84,7 +84,6 @@ class UserService extends AppService
         return $this->processUpdate($data, $id);
     }
 
-
     /**
      * @param bool $object
      * @return \Illuminate\Contracts\Auth\Authenticatable|null

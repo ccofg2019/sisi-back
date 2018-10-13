@@ -32,4 +32,12 @@ class Zone extends AppModel
         'updated_at',
         'deleted_at'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function occurrences()
+    {
+        return $this->hasMany(OccurrenceReport::class);
+    }
 }

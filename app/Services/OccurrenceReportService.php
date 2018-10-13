@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Entities\OccurrenceReport;
 use App\Repositories\OccurrenceReportRepository;
 use App\Services\Traits\CrudMethods;
 
@@ -18,26 +19,28 @@ class OccurrenceReportService extends AppService
 
     }
 
-    /**
-     * @var OccurrenceReportRepository $repository
-     */
+    /** @var OccurrenceReportRepository  */
     protected $repository;
 
+    /** @var InvolvedPeopleService  */
     protected $involvedPeopleService;
 
+    /** @var OccurrenceObjectService  */
     protected $occurrenceObjectService;
 
     /**
-     * RoleService constructor.
+     * OccurrenceReportService constructor.
      *
      * @param OccurrenceReportRepository $repository
+     * @param InvolvedPeopleService $involvedPeopleService
+     * @param OccurrenceObjectService $occurrenceObjectService
      */
     public function __construct(OccurrenceReportRepository $repository,
                                 InvolvedPeopleService $involvedPeopleService,
                                 OccurrenceObjectService $occurrenceObjectService)
     {
-        $this->repository = $repository;
-        $this->involvedPeopleService = $involvedPeopleService;
+        $this->repository              = $repository;
+        $this->involvedPeopleService   = $involvedPeopleService;
         $this->occurrenceObjectService = $occurrenceObjectService;
     }
 
@@ -56,12 +59,16 @@ class OccurrenceReportService extends AppService
         return $this->processAll($limit);
     }
 
-    public function create(array $data)    {
-
+    /**
+     * @param array $data
+     * @return array
+     */
+    public function create(array $data)
+    {
         $occurrence_report = $this->processCreate($data);
 
         if(isset($occurrence_report)) {
-            if (isset($data['involved_person'])) {
+            if (isset($data['involved_people'])) {
                 foreach ($data['involved_person'] as $involved_people) {
                     $person[] = $this->involvedPeopleService->create(
                         array_merge($involved_people, ['occurrence_report_id' => $occurrence_report['data']['id']]));
@@ -70,9 +77,8 @@ class OccurrenceReportService extends AppService
 
             if (isset($data['occurrence_objects'])) {
                 foreach ($data['occurrence_objects'] as $occurrence_object) {
-                    $this->OccurrenceObjectService->create(
-                        array_merge($occurrence_object, ['occurrence_report_id' => $occurrence_report['data']['id']])
-                    );
+                    $report = OccurrenceReport::find($occurrence_report['data']['id']);
+                    $report->objects()->attach($occurrence_object['object_id']);
                 }
             }
 

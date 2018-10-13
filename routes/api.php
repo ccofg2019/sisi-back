@@ -15,7 +15,7 @@
 
 
 /** ROTAS ABERTAS */
-//Mobile
+// Mobile
 Route::prefix('mobile')->group(function () {
     Route::post('/users',               'UsersController@mobileStore');
 });
@@ -23,11 +23,12 @@ Route::prefix('mobile')->group(function () {
 /** ROTAS FECHADAS */
 Route::middleware('auth:api')->group(function() {
 
-
+    // Users
     Route::get('/user/authenticated',       'UsersController@authenticated');
     Route::resource('/users',               'UsersController');
-
     Route::resource('/roles',               'RolesController');
+
+    // Occurrences
     Route::resource('/occurrence-reports',  'OccurrenceReportsController');
     Route::resource('/occurrence-types',    'OccurrenceTypesController');
     Route::resource('/object',              'OccurrenceObjectsController');

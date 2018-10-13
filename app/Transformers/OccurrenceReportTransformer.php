@@ -33,6 +33,8 @@ class OccurrenceReportTransformer extends TransformerAbstract
             'police_report'         => $model->police_report,
             'estimated_loss'        => $model->estimated_loss,
             'status'                => $model->status,
+            'involved_people'       => $this->getInvolvedPeople($model),
+            'occurrence_objects'    => $this->getOccurrenceObjects($model),
             'user'                  => [
                 'id'            => $model->user->id,
                 'name'          => $model->user->name,
@@ -77,5 +79,43 @@ class OccurrenceReportTransformer extends TransformerAbstract
         }
 
         return $agent;
+    }
+
+    /**
+     * @param OccurrenceReport $model
+     * @return array
+     */
+    private function getInvolvedPeople(OccurrenceReport $model)
+    {
+        $involvedPeople = [];
+        if(isset($model->involvedPeople)) {
+            foreach($model->involvedPeople as $person) {
+                $involvedPeople[] = [
+                    'id'            => $person->id,
+                    'name'          => $person->name,
+                    'cpf'           => $person->cpf,
+                    'birthdate'     => $person->birthdate,
+                    'gender'        => $person->gender,
+                    'skin_color'    => $person->skin_color,
+                    'type'          => $person->type,
+                ];
+            }
+        }
+
+        return $involvedPeople;
+    }
+
+    private function getOccurrenceObjects(OccurrenceReport $model)
+    {
+        $occurrenceObjects = [];
+        if(isset($model->objects)) {
+            \Log::debug($model->objects()->toSql());
+            foreach($model->objects as $object) {
+                $occurrenceObjects[] = [
+                    'id'            => $object->id,
+                    'description'   => $object->description,
+                ];
+            }
+        }
     }
 }

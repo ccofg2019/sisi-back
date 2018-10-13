@@ -13,12 +13,12 @@ class OccurranceObjectsSeeder extends Seeder
     {
 
         $objects = [
-            ['description'      =>  'Objetos Pessoais'],
-            ['description'      => 'Documentos'],
             ['description'      => 'Bicicletas'],
             ['description'      => 'Celular'],
+            ['description'      => 'Documentos'],
             ['description'      => 'Notebook'],
             ['description'      => 'Veículos'],
+            ['description'      => 'Objetos Pessoais'],
             ['description'      => 'Outros'],
 
         ];

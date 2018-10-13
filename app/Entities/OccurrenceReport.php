@@ -11,7 +11,6 @@ namespace App\Entities;
 class OccurrenceReport extends AppModel
 {
 
-
     /**
      * The attributes that are mass assignable.
      *
@@ -84,5 +83,22 @@ class OccurrenceReport extends AppModel
     public function zone()
     {
         return $this->belongsTo(Zone::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function objects()
+    {
+        return $this->belongsToMany(OccurrenceObject::class,
+            'occurrence_object_occurrence_report', 'report_id', 'object_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function involvedPeople()
+    {
+        return $this->hasMany(InvolvedPerson::class);
     }
 }

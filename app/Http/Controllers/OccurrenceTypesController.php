@@ -42,7 +42,7 @@ class OccurrenceTypesController extends Controller
     public function __construct(OccurrenceTypeService $service,
                                 OccurrenceTypeValidator $validator)
     {
-        $this->service      = $service;
-        $this->validator    = $validator;
+        $this->service   = $service;
+        $this->validator = $validator;
     }
 }
