@@ -18,9 +18,9 @@ class CreateInvolvedPeopleTable extends Migration
 		Schema::create('involved_people', function(Blueprint $table) {
             $table->increments('id');
 
-            $table->string('name');
-            $table->string('cpf', 11);
-            $table->date('birthdate');
+            $table->string('name')->nullable();
+            $table->string('cpf', 11)->nullable();
+            $table->date('birthdate')->nullable();
             $table->enum('gender', ['MASCULINO','FEMININO','TRANS_MASC','TRANS_FEM', 'NAO_DECLARADO']);
             $table->enum('skin_color', ['BRANCO','PARDO','NEGRO','INDIGENA','AMARELO', 'NAO_DECLARADO']);
             $table->enum('type', ['VITIMA', 'SUSPEITO', 'TESTEMUNHA']);

@@ -2,18 +2,13 @@
 
 namespace App\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-use Prettus\Repository\Contracts\Transformable;
-use Prettus\Repository\Traits\TransformableTrait;
-
 /**
  * Class OccurrenceType.
  *
  * @package namespace App\Entities;
  */
-class OccurrenceType extends Model implements Transformable
+class OccurrenceType extends AppModel
 {
-    use TransformableTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -39,12 +34,9 @@ class OccurrenceType extends Model implements Transformable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-
     public function occurrences()
     {
         return $this->hasMany(OccurrenceReport::class);
     }
-
-
 
 }
