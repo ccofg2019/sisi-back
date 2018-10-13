@@ -51,6 +51,18 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    /** CONSTANTS */
+    const COMMON_USER                   = 1;
+    const URBAN_INSPECTOR               = 2;
+    const URBAN_DIRECTOR                = 3;
+    const AGENT                         = 4;
+    const INSPECTOR                     = 5;
+    const OPERATIONAL_DIRECTOR          = 6;
+    const SUPERINTENDENT                = 7;
+    const INVESTIGATOR                  = 8;
+    const CHIEF_INVESTIGATOR            = 9;
+    const SUPERINTENDENT_INVESTIGATOR   = 10;
+
     /** RELATIONSHIPS */
 
     /**

@@ -13,10 +13,17 @@ class ZonesTableSeeder extends Seeder
     {
 
       $zones = [
-                ['name' =>  'Delta Fox',         'description' => 'Medicina'],
-                ['name' =>  'Delta Horse',         'description' => 'CCO'],
-                ['name' =>  'Delta Dog',         'description' => 'Artes'],
-                ['name' =>  'Delta Cat',         'description' => 'Educação fisica'],
+                ['name' =>  'Fox',               'description' => 'Medicina',           'campus' => 'Recife'],
+                ['name' =>  'Zona 009',          'description' => 'Fisioterapia',       'campus' => 'Recife'],
+                ['name' =>  'Horse',             'description' => 'CCO',                'campus' => 'Recife'],
+
+                ['name' =>  'Dog',               'description' => 'Artes',              'campus' => 'Caruaru'],
+                ['name' =>  'Zona 002',          'description' => 'Odontologia',        'campus' => 'Caruaru'],
+                ['name' =>  'Cat',               'description' => 'Educação fisica',    'campus' => 'Caruaru'],
+
+                ['name' =>  'Cat',               'description' => 'Educação fisica',    'campus' => 'Vitória'],
+                ['name' =>  'Fish',              'description' => 'Artes',              'campus' => 'Vitória'],
+                ['name' =>  'Zona 3421',         'description' => 'Educação fisica',    'campus' => 'Vitória'],
 
         ];
 

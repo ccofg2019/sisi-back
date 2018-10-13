@@ -15,7 +15,10 @@
 
 
 /** ROTAS ABERTAS */
-
+//Mobile
+Route::prefix('mobile')->group(function () {
+    Route::post('/users',               'UsersController@mobileStore');
+});
 
 /** ROTAS FECHADAS */
 Route::middleware('auth:api')->group(function() {
@@ -23,6 +26,8 @@ Route::middleware('auth:api')->group(function() {
     Route::resource('/users',               'UsersController');
     Route::resource('/roles',               'RolesController');
     Route::resource('/occurrence-reports',  'OccurrenceReportsController');
+    Route::resource('/occurrence-types',    'OccurrenceTypesController');
     Route::resource('/object',              'OccurrenceObjectsController');
+    Route::resource('/zones',               'ZoneController');
 
 });

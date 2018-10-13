@@ -10,6 +10,10 @@
 - MySQL Server
 - PHP >= 7.1
 - Composer
+## Documentação
+
+1. [Documentação de Requisições](https://github.com/unifg/sisi-back/blob/develop/documetation/readme.md)
+1. [Diagrama do Banco](https://github.com/unifg/sisi-back/blob/develop/documetation/api-sisi.png)
 
 ## Instalação
 
@@ -44,6 +48,7 @@
 1. Rode o comando  ``` php artisan key:generate ``` para criar a key do projeto no arquivo **.env**.
 1. Após isso configure o arquivo **.env** com as informações do banco.
 1. Rode o comando ``` php artisan migrate ``` para rodar as migrations e criar as tabelas do banco.
+1. Rode ``` php artisan db:seed ``` para popular o banco com instâncias de teste.
 
 ### Instalação do Passport
 
