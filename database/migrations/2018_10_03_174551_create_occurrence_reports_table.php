@@ -23,9 +23,9 @@ class CreateOccurrenceReportsTable extends Migration
             $table->date('occurrence_date');
             $table->time('occurrence_time');
             $table->string('coordinates');
-            $table->boolean('police_report');
+            $table->boolean('police_report')->default(false);
             $table->decimal('estimated_loss')->nullable();
-            $table->enum('status', ['AGUARDANDO', 'EM ANALISE', 'INVESTIGACAO', 'FINALIZADA', 'ARQUIVADA'])->default('AGUARDANDO');
+            $table->enum('status', ['NOVO', 'EM INVESTIGACAO', 'CONCLUIDO', 'ARQUIVADA'])->default('NOVO');
             $table->boolean('confidential')->default(false);
 
             $table->unsignedInteger('user_id')->index();

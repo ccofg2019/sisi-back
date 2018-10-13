@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['MASCULINO','FEMININO','TRANS_MASC','TRANS_FEM', 'NAO_DECLARADO']);
             $table->enum('skin_color', ['BRANCO','PARDO','NEGRO','INDIGENA','AMARELO', 'NAO_DECLARADO']);
             $table->string('cellphone')->unique();
-            $table->string('phone')->nulllabel();
+            $table->string('phone')->nullable();
             $table->enum('status',['ATIVO','BLOQUEADO','INATIVO']);
             $table->string('email')->unique();
             $table->string('password');

@@ -20,6 +20,7 @@ $factory->define(App\Entities\User::class, function (Faker $faker) {
     $gender     = ['MASCULINO','FEMININO','TRANS_MASC','TRANS_FEM'];
     $skin_color = ['BRANCO','PARDO','NEGRO','INDIGENA','AMARELO'];
     $status     = ['ATIVO','BLOQUEADO','INATIVO'];
+
     return [
         'name'              => $faker->name,
         'cpf'               => rand(01111111111, 99999999999),

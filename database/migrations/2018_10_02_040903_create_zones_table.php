@@ -19,7 +19,7 @@ class CreateZonesTable extends Migration
             $table->increments('id');
 
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('campus');
 
             $table->timestamps();
