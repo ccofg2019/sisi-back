@@ -83,13 +83,17 @@ class OccurrenceReportService extends AppService
             }
 
             return [
-                "error" => "false",
-                "message" => "Ocorrêcia registrada com sucesso."
+                "data" => [
+                    "error" => "false",
+                    "message" => "Ocorrêcia registrada com sucesso."
+                ];
             ];
         } else {
             return [
-                "error"     => "true",
-                "message"   => "Não foi possível registrar ocorrência."
+                "data" => [
+                    "error"     => "true",
+                    "message"   => "Não foi possível registrar ocorrência."
+                ];
             ];
         }
 
