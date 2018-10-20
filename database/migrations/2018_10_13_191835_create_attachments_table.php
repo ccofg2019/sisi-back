@@ -19,14 +19,15 @@ class CreateAttachmentsTable extends Migration
 
             $table->increments('id');
             $table->string('url')->unique();
-            $table->string('attachable_type');
 
             $table->unsignedInteger('user_id')->index();
-            $table->unsignedInteger('attachable_id')->index();
+            $table->unsignedInteger('attachable_id');
+            $table->string('attachable_type');
 
             $table->timestamps();
             $table->softDeletes();
 
+            $table->index(['attachable_id', 'created_at', 'deleted_at']);
 		});
 
 	}

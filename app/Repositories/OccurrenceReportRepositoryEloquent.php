@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Presenters\OccurrenceReportPresenter;
 use App\Services\Traits\SoftDeletes;
-use App\Transformers\OccurrenceReportTransformer;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Entities\OccurrenceReport;

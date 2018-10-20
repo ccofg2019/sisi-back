@@ -101,4 +101,9 @@ class OccurrenceReport extends AppModel
     {
         return $this->hasMany(InvolvedPerson::class);
     }
+
+    public function attachments()
+    {
+        return $this->morphMany(Attachments::class, 'attachable');
+    }
 }

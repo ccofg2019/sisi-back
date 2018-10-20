@@ -20,21 +20,17 @@ class AttachmentsValidator extends LaravelValidator
 
     protected $rules = [
         ValidatorInterface::RULE_CREATE => [
-
-            'url'              => 'required|max:250',
-            'attachable_type'  => 'required|max:20',
-            'user_id'          => 'required|max:20',
-            'attachable_id'    => 'required|max:20',
-
+//            'url'              => 'required|max:250',
+//            'attachable_type'  => 'required|max:20',
+//            'user_id'          => 'required|max:20',
+//            'attachable_id'    => 'required|max:20',
         ],
 
         ValidatorInterface::RULE_UPDATE => [
-
-            'url'              => 'max:250',
-            'attachable_type'  => 'max:20',
-            'user_id'          => 'max:20',
-            'attachable_id'    => 'max:20',
-
+//            'url'              => 'max:250',
+//            'attachable_type'  => 'max:20',
+//            'user_id'          => 'max:20',
+//            'attachable_id'    => 'max:20',
         ],
     ];
 }

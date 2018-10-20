@@ -21,12 +21,10 @@ class Attachments extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
-
         'url',
-        'attachable_type',
+        'user_id',
         'attachable_id',
-        'user_id'
-
+        'attachable_type'
     ];
 
 
@@ -38,9 +36,11 @@ class Attachments extends Model implements Transformable
     ];
 
     public function attachments(){
+        return $this->morphTo();
+    }
 
-        return $this->morphTo(Attachments::class);
-
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
 }
