@@ -39,7 +39,7 @@ class Attachments extends Model implements Transformable
 
     public function attachments(){
 
-
+        return $this->morphTo(Attachments::class);
 
     }
 

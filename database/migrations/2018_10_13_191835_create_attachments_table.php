@@ -21,7 +21,7 @@ class CreateAttachmentsTable extends Migration
             $table->string('url')->unique();
             $table->string('attachable_type');
 
-            $table->unsignedInteger('user_id')->inded();
+            $table->unsignedInteger('user_id')->index();
             $table->unsignedInteger('attachable_id')->index();
 
             $table->timestamps();

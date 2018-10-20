@@ -22,12 +22,15 @@ class AttachmentsTransformer extends TransformerAbstract
     public function transform(Attachments $model)
     {
         return [
-            'id'         => (int) $model->id,
+            'id'                    => (int) $model->id,
 
-            /* place your other model properties here */
+            'url'                   => $model->url,
+            'attachable_type'       => $model->attachable_type,
+            'user_id'               => $model->user_id,
+            'attachable_id'         => $model->attachable_id,
 
-            'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at
+            'created_at'            => $model->created_at->toDateTimeString(),
+            'updated_at'            => $model->updated_at->toDateTimeString()
         ];
     }
 }
