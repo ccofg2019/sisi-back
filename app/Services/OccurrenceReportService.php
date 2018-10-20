@@ -86,14 +86,14 @@ class OccurrenceReportService extends AppService
                 "data" => [
                     "error" => "false",
                     "message" => "Ocorrêcia registrada com sucesso."
-                ];
+                ]
             ];
         } else {
             return [
                 "data" => [
                     "error"     => "true",
                     "message"   => "Não foi possível registrar ocorrência."
-                ];
+                ]
             ];
         }
 
