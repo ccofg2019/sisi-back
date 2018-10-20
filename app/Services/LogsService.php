@@ -63,6 +63,5 @@ class LogsService extends AppService
             'loggable_id'   => $id,
             'loggable_type' => $type,
         ]);
-
     }
 }

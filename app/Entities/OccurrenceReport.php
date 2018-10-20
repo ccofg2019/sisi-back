@@ -3,6 +3,8 @@
 namespace App\Entities;
 
 
+use Illuminate\Support\Facades\Log;
+
 /**
  * Class OccurrenceReport.
  *
@@ -100,5 +102,13 @@ class OccurrenceReport extends AppModel
     public function involvedPeople()
     {
         return $this->hasMany(InvolvedPerson::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function logs()
+    {
+        return $this->morphMany(Log::class, 'loggable');
     }
 }

@@ -16,7 +16,6 @@ class OccurrenceReportService extends AppService
     use CrudMethods {
         all    as protected processAll;
         create as protected processCreate;
-
     }
 
     /** @var OccurrenceReportRepository  */
@@ -84,16 +83,16 @@ class OccurrenceReportService extends AppService
 
             return [
                 "data" => [
-                    "error" => "false",
-                    "message" => "Ocorrêcia registrada com sucesso."
-                ];
+                    "error"     => "false",
+                    "message"   => "Ocorrêcia registrada com sucesso."
+                ]
             ];
         } else {
             return [
                 "data" => [
                     "error"     => "true",
                     "message"   => "Não foi possível registrar ocorrência."
-                ];
+                ]
             ];
         }
 
