@@ -72,4 +72,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function attachment()
+    {
+        return $this->hasMany(Attachments::class);
+    }
 }
