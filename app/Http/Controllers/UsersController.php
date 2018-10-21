@@ -48,7 +48,6 @@ class UsersController extends Controller
     public function authenticated()
     {
         $user = $this->service->getUser(true);
-//        $this->service->lastLogin($user);
         return response()->json(['data' => $user]);
     }
 
