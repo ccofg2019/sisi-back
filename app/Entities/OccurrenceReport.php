@@ -3,8 +3,6 @@
 namespace App\Entities;
 
 
-use Illuminate\Support\Facades\Log;
-
 /**
  * Class OccurrenceReport.
  *
@@ -109,6 +107,11 @@ class OccurrenceReport extends AppModel
      */
     public function logs()
     {
-        return $this->morphMany(Log::class, 'loggable');
+        return $this->morphMany(Logs::class, 'loggable');
+    }
+
+    public function attachments()
+    {
+        return $this->morphMany(Attachments::class, 'attachable');
     }
 }

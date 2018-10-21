@@ -75,6 +75,11 @@ class User extends Authenticatable
 
     public function logs()
     {
-        return $this->morphMany('App\Entities\Logs', 'loggable');
+        return $this->morphMany(Logs::class, 'loggable');
+    }
+
+    public function attachment()
+    {
+        return $this->hasMany(Attachments::class);
     }
 }
