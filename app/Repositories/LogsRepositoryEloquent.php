@@ -2,22 +2,22 @@
 
 namespace App\Repositories;
 
-use App\Presenters\OccurrenceReportPresenter;
+use App\Presenters\LogsPresenter;
 use App\Services\Traits\SoftDeletes;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Entities\OccurrenceReport;
-use App\Validators\OccurrenceReportValidator;
+use App\Repositories\LogsRepository;
+use App\Entities\Logs;
+use App\Validators\LogsValidator;
 
 /**
- * Class OccurrenceReportRepositoryEloquent.
+ * Class LogsRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class OccurrenceReportRepositoryEloquent extends BaseRepository implements OccurrenceReportRepository
+class LogsRepositoryEloquent extends BaseRepository implements LogsRepository
 {
     use SoftDeletes;
-
     /**
      * Specify Model class name
      *
@@ -25,7 +25,7 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
      */
     public function model()
     {
-        return OccurrenceReport::class;
+        return Logs::class;
     }
 
     /**
@@ -36,7 +36,7 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
     public function validator()
     {
 
-        return OccurrenceReportValidator::class;
+        return LogsValidator::class;
     }
 
 
@@ -53,7 +53,7 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
      */
     public function presenter()
     {
-        return OccurrenceReportPresenter::class;
+        return LogsPresenter::class;
     }
 
     /**
@@ -90,4 +90,8 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
 
         return $model->forceDelete();
     }
+
+
+
+
 }
