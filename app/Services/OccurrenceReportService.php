@@ -70,7 +70,6 @@ class OccurrenceReportService extends AppService
             if (isset($data['involved_person'])) {
                 foreach ($data['involved_person'] as $involved_people) {
                     $people = array_merge($involved_people, ['occurrence_report_id' => $occurrence_report['data']['id']]);
-                    \Log::debug($people);
                     $person[] = $this->involvedPeopleService->create($people);
                 }
             }
