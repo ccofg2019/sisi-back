@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Traits\CrudMethods;
 
-use App\Repositories\IrregularityTypesRepository;
+
+use App\Services\IrregularityTypesService;
 use App\Validators\IrregularityTypesValidator;
 
 /**
@@ -17,9 +18,9 @@ class IrregularityTypesController extends Controller
     use CrudMethods;
 
     /**
-     * @var IrregularityTypesRepository
+     * @var IrregularityTypesService
      */
-    protected $repository;
+    protected $service;
 
     /**
      * @var IrregularityTypesValidator
@@ -28,14 +29,13 @@ class IrregularityTypesController extends Controller
 
     /**
      * IrregularityTypesController constructor.
-     *
-     * @param IrregularityTypesRepository $repository
+     * @param IrregularityTypesService $service
      * @param IrregularityTypesValidator $validator
      */
-    public function __construct(IrregularityTypesRepository $repository,
+    public function __construct(IrregularityTypesService $service,
                                 IrregularityTypesValidator $validator)
     {
-        $this->repository = $repository;
+        $this->service = $service;
         $this->validator = $validator;
     }
 

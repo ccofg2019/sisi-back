@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class OccurrenceTypeTableSeeder extends Seeder
+class IrregularityTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -40,7 +40,7 @@ class IrregularityTypes extends Model implements Transformable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function occurrences()
+    public function irregularities()
     {
         return $this->hasMany(IrregularityReport::class);
     }
