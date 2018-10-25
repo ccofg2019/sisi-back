@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Presenters\OccurrenceReportPresenter;
 use App\Services\Traits\SoftDeletes;
-use App\Transformers\OccurrenceReportTransformer;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Entities\OccurrenceReport;
@@ -18,6 +17,22 @@ use App\Validators\OccurrenceReportValidator;
 class OccurrenceReportRepositoryEloquent extends BaseRepository implements OccurrenceReportRepository
 {
     use SoftDeletes;
+
+    /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'zone_id',
+        'occurrence_type_id',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $fieldsRules = [
+        'zone_id'               => ['numeric', 'max:2147483647'],
+        'occurrence_type_id'    => ['numeric', 'max:2147483647'],
+    ];
 
     /**
      * Specify Model class name

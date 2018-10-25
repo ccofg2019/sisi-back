@@ -16,7 +16,6 @@ class OccurrenceReportService extends AppService
     use CrudMethods {
         all    as protected processAll;
         create as protected processCreate;
-
     }
 
     /** @var OccurrenceReportRepository  */
@@ -68,10 +67,10 @@ class OccurrenceReportService extends AppService
         $occurrence_report = $this->processCreate($data);
 
         if(isset($occurrence_report)) {
-            if (isset($data['involved_people'])) {
+            if (isset($data['involved_person'])) {
                 foreach ($data['involved_person'] as $involved_people) {
-                    $person[] = $this->involvedPeopleService->create(
-                        array_merge($involved_people, ['occurrence_report_id' => $occurrence_report['data']['id']]));
+                    $people = array_merge($involved_people, ['occurrence_report_id' => $occurrence_report['data']['id']]);
+                    $person[] = $this->involvedPeopleService->create($people);
                 }
             }
 
@@ -84,16 +83,16 @@ class OccurrenceReportService extends AppService
 
             return [
                 "data" => [
-                    "error" => "false",
-                    "message" => "Ocorrêcia registrada com sucesso."
-                ];
+                    "error"     => "false",
+                    "message"   => "Ocorrêcia registrada com sucesso."
+                ]
             ];
         } else {
             return [
                 "data" => [
                     "error"     => "true",
                     "message"   => "Não foi possível registrar ocorrência."
-                ];
+                ]
             ];
         }
 

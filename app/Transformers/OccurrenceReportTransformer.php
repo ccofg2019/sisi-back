@@ -109,7 +109,6 @@ class OccurrenceReportTransformer extends TransformerAbstract
     {
         $occurrenceObjects = [];
         if(isset($model->objects)) {
-            \Log::debug($model->objects()->toSql());
             foreach($model->objects as $object) {
                 $occurrenceObjects[] = [
                     'id'            => $object->id,
@@ -117,5 +116,7 @@ class OccurrenceReportTransformer extends TransformerAbstract
                 ];
             }
         }
+
+        return $occurrenceObjects;
     }
 }

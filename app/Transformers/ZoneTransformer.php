@@ -29,7 +29,6 @@ class ZoneTransformer extends TransformerAbstract
 
             'created_at'            => $model->created_at->toDateTimeString(),
             'updated_at'            => $model->updated_at->toDateTimeString()
-
         ];
     }
 }
