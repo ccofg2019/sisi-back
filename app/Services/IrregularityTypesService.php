@@ -12,7 +12,9 @@ use App\Services\Traits\CrudMethods;
  */
 class IrregularityTypesService extends AppService
 {
-    use CrudMethods {
+    use CrudMethods
+
+    {
         all as protected processAll;
     }
 

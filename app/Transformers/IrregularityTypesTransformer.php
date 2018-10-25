@@ -22,13 +22,13 @@ class IrregularityTypesTransformer extends TransformerAbstract
     public function transform(IrregularityTypes $model)
     {
         return [
-            'id'         => (int) $model->id,
+            'id'            => (int) $model->id,
 
             'name'          => $model->name,
             'description'   => $model->description,
 
-            'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at
+            'created_at'    => $model->created_at,
+            'updated_at'    => $model->updated_at
         ];
     }
 }
