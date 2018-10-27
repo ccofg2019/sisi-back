@@ -2,14 +2,18 @@
 
 namespace App\Entities;
 
+use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class OccurrenceReport.
+ * Class IrregularityReport.
  *
  * @package namespace App\Entities;
  */
-class OccurrenceReport extends AppModel
+class IrregularityReport extends Model implements Transformable
 {
+    use TransformableTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -19,39 +23,29 @@ class OccurrenceReport extends AppModel
     protected $fillable = [
         'title',
         'story',
-        'occurrence_date',
-        'occurrence_time',
         'coordinates',
-        'police_report',
-        'estimated_loss',
-        'status',
-        'confidential',
+        'irregularity_date',
+        'irregularity_time',
         'user_id',
         'agent_id',
-        'occurrence_type_id',
-        'zone_id'
+        'irregularity_type_id',
+        'zone_id',
+        'logs_id',
+        'attachaments_id'
     ];
 
-    /**
-     * The attributes that should be date type.
-     *
-     * @var array
-     */
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
-    /** CONSTANTS */
+    /** todos os tipos de relação */
 
-    CONST OCCURRENCE_REPORT_WAITING         = 'AGUARDANDO';
-    CONST OCCURRENCE_REPORT_IN_ANALYSIS     = 'ANALISE';
-    CONST OCCURRENCE_REPORT_INVESTIGATION   = 'INVESTIGACAO';
-    CONST OCCURRENCE_REPORT_FINISHED        = 'FINALIZADA';
-    CONST OCCURRENCE_REPORT_ARCHIVED        = 'ARQUIVADA';
-
-    /** RELATIONSHIPS */
+    public function irregularity()
+    {
+        return $this->hasMany(IrregularityReport::class);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -72,14 +66,6 @@ class OccurrenceReport extends AppModel
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function type()
-    {
-        return $this->belongsTo(OccurrenceType::class, 'occurrence_type_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function zone()
     {
         return $this->belongsTo(Zone::class);
@@ -88,24 +74,15 @@ class OccurrenceReport extends AppModel
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function objects()
+    public function irregularity_type()
     {
-        return $this->belongsToMany(OccurrenceObject::class,
-            'occurrence_object_occurrence_report', 'report_id', 'object_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function involvedPeople()
-    {
-        return $this->hasMany(InvolvedPerson::class);
+        return $this->belongsToMany(IrregularityTypes::class,
+            'name', 'irregularity_id', 'irregularitytypes_id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-
     public function logs()
     {
         return $this->morphMany(Logs::class, 'loggable');
@@ -119,4 +96,5 @@ class OccurrenceReport extends AppModel
     {
         return $this->morphMany(Attachments::class, 'attachable');
     }
+
 }
