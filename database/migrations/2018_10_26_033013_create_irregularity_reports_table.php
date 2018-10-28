@@ -19,10 +19,8 @@ class CreateIrregularityReportsTable extends Migration
             $table->increments('id');
 
             $table->string('title');
-            $table->string('story');
+            $table->text('story');
             $table->string('coordinates');
-            $table->date('irregularity_date');
-            $table->time('irregularity_time');
 
             $table->unsignedInteger('user_id')->index();
             $table->foreign('user_id')->references('id')->on('users');
@@ -31,17 +29,10 @@ class CreateIrregularityReportsTable extends Migration
             $table->foreign('agent_id')->references('id')->on('users');
 
             $table->unsignedInteger('irregularity_type_id')->index();
-            $table->foreign('irregularity_type_id')->references('id')->on('irregularity_type');
+            $table->foreign('irregularity_type_id')->references('id')->on('irregularity_types');
 
-            $table->unsignedSmallInteger('zone_id')->index();
+            $table->unsignedInteger('zone_id')->index();
             $table->foreign('zone_id')->references('id')->on('zones');
-
-            $table->unsignedInteger('logs_id')->index();
-            $table->foreign('logs_id')->references('id')->on('logs');
-
-            $table->unsignedInteger('attachments_id')->index();
-            $table->foreign('attachments_id')->references('id')->on('attachments');
-
 
             $table->timestamps();
             $table->softDeletes();
@@ -55,6 +46,6 @@ class CreateIrregularityReportsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('irregularity_reports');
+		Schema::dropIfExists('irregularity_reports');
 	}
 }

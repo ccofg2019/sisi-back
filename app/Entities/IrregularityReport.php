@@ -31,7 +31,7 @@ class IrregularityReport extends Model implements Transformable
         'irregularity_type_id',
         'zone_id',
         'logs_id',
-        'attachaments_id'
+        'attachments_id'
     ];
 
     protected $dates = [

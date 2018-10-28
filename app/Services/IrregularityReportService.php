@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Entities\IrregularityTypes;
 use App\Repositories\IrregularityReportRepository;
 use App\Services\Traits\CrudMethods;
 
@@ -20,8 +19,6 @@ class IrregularityReportService extends AppService
 
     /** @var IrregularityReportRepository  */
     protected $repository;
-
-// seria no caso as zonas, mas elas não foram definidas totalmente
 
     /** @var IrregularityTypesService  */
     protected $irregularityTypesService;
@@ -60,31 +57,7 @@ class IrregularityReportService extends AppService
      */
     public function create(array $data)
     {
-    ;
-
-
-        if (isset($data['irregularity_type'])) {
-                foreach ($data['irregularity_type'] as $irregularity_type) {
-                    $report = IrregularityTypes::find($irregularity_type['name']['id']);
-                    $report->irregularitytypes()->attach($irregularity_type['irregularity_type_id']);
-                }
-
-
-            return [
-                "data" => [
-                    "error"     => "false",
-                    "message"   => "Irregularidade registrada com sucesso."
-                ]
-            ];
-        } else {
-            return [
-                "data" => [
-                    "error"     => "true",
-                    "message"   => "Não foi possível registrar irregularidade."
-                ]
-            ];
-        }
-
-
+        // Adicionar attachment and log
+        return $this->processCreate($data);
     }
 }

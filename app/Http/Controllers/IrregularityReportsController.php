@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Traits\CrudMethods;
+use App\Services\IrregularityReportService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
-
-use App\Repositories\IrregularityReportRepository;
 use App\Validators\IrregularityReportValidator;
 
 /**
@@ -37,9 +37,9 @@ class IrregularityReportsController extends Controller
      * @param IrregularityReportValidator $validator
      */
     public function __construct(IrregularityReportService $service,
-                                    IrregularityReportValidator $validator)
+                                IrregularityReportValidator $validator)
     {
-        $this->repository = $service;
+        $this->service    = $service;
         $this->validator  = $validator;
     }
 
