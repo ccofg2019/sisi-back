@@ -13,7 +13,7 @@ class AddPoliceReportNumberToOccurrenceReportsTable extends Migration
      */
     public function up()
     {
-        Schema::table('occurence_reports', function (Blueprint $table) {
+        Schema::table('occurrence_reports', function (Blueprint $table) {
 
             $table->string('police_report_number');
 
@@ -27,7 +27,7 @@ class AddPoliceReportNumberToOccurrenceReportsTable extends Migration
      */
     public function down()
     {
-        Schema::table('occurence_reports', function (Blueprint $table) {
+        Schema::table('occurrence_reports', function (Blueprint $table) {
 
             $table->dropIfExists('police_report_number');
 
