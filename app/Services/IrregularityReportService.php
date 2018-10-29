@@ -58,6 +58,7 @@ class IrregularityReportService extends AppService
     public function create(array $data)
     {
         // Adicionar attachment and log
+
         return $this->processCreate($data);
     }
 }

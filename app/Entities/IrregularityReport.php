@@ -72,13 +72,13 @@ class IrregularityReport extends Model implements Transformable
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function irregularity_type()
+    public function type()
     {
-        return $this->belongsToMany(IrregularityTypes::class,
-            'name', 'irregularity_id', 'irregularitytypes_id');
+        return $this->belongsTo(IrregularityType::class, 'irregularity_type_id');
     }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany

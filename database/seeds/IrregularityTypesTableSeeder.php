@@ -21,7 +21,7 @@ class IrregularityTypesTableSeeder extends Seeder
         ];
 
         foreach ($types as $type) {
-            \App\Entities\IrregularityTypes::create($type);
+            \App\Entities\IrregularityType::create($type);
         }
 
     }

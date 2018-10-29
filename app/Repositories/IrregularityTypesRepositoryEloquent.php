@@ -7,7 +7,7 @@ use App\Services\Traits\SoftDeletes;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\IrregularityTypesRepository;
-use App\Entities\IrregularityTypes;
+use App\Entities\IrregularityType;
 use App\Validators\IrregularityTypesValidator;
 
 /**
@@ -27,7 +27,7 @@ class IrregularityTypesRepositoryEloquent extends BaseRepository implements Irre
      */
     public function model()
     {
-        return IrregularityTypes::class;
+        return IrregularityType::class;
     }
 
     /**

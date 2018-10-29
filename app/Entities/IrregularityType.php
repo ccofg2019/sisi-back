@@ -7,11 +7,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class IrregularityTypes.
+ * Class IrregularityType.
  *
  * @package namespace App\Entities;
  */
-class IrregularityTypes extends Model implements Transformable
+class IrregularityType extends Model implements Transformable
 {
     use TransformableTrait;
 

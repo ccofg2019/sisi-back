@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Traits\CrudMethods;
-use App\Services\IrregularityReportService;
 use App\Services\UserService;
-use Illuminate\Http\Request;
 use App\Validators\IrregularityReportValidator;
+use App\Services\IrregularityReportService;
+use Illuminate\Http\Request;
 
 /**
  * Class IrregularityReportsController.
@@ -17,7 +17,7 @@ class IrregularityReportsController extends Controller
 {
 
     use CrudMethods{
-        store as public processStore;
+        store as protected processStore;
     }
 
     /**
@@ -51,6 +51,8 @@ class IrregularityReportsController extends Controller
     public function store(Request $request)
     {
         $user = UserService::getUser(true);
+
+//        \Log::debug($request->all());
 
         app()->request->merge(['user_id' => $user->id]);
         return $this->processStore($request);
