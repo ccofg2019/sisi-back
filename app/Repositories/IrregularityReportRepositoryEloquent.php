@@ -2,22 +2,21 @@
 
 namespace App\Repositories;
 
-use App\Presenters\IrregularityTypesPresenter;
+use App\Presenters\IrregularityReportPresenter;
 use App\Services\Traits\SoftDeletes;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\IrregularityTypesRepository;
-use App\Entities\IrregularityType;
-use App\Validators\IrregularityTypesValidator;
+use App\Repositories\IrregularityReportRepository;
+use App\Entities\IrregularityReport;
+use App\Validators\IrregularityReportValidator;
 
 /**
- * Class IrregularityTypesRepositoryEloquent.
+ * Class IrregularityReportRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class IrregularityTypesRepositoryEloquent extends BaseRepository implements IrregularityTypesRepository
+class IrregularityReportRepositoryEloquent extends BaseRepository implements IrregularityReportRepository
 {
-
     use SoftDeletes;
 
     /**
@@ -27,7 +26,7 @@ class IrregularityTypesRepositoryEloquent extends BaseRepository implements Irre
      */
     public function model()
     {
-        return IrregularityType::class;
+        return IrregularityReport::class;
     }
 
     /**
@@ -38,7 +37,7 @@ class IrregularityTypesRepositoryEloquent extends BaseRepository implements Irre
     public function validator()
     {
 
-        return IrregularityTypesValidator::class;
+        return IrregularityReportValidator::class;
     }
 
 
@@ -51,11 +50,11 @@ class IrregularityTypesRepositoryEloquent extends BaseRepository implements Irre
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function presenter()
     {
-        return IrregularityTypesPresenter::class;
+        return IrregularityReportPresenter::class;
     }
 
     /**
@@ -92,8 +91,5 @@ class IrregularityTypesRepositoryEloquent extends BaseRepository implements Irre
 
         return $model->forceDelete();
     }
-
-
-
-
+    
 }

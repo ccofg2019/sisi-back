@@ -105,10 +105,15 @@ class OccurrenceReport extends AppModel
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
+
     public function logs()
     {
         return $this->morphMany(Logs::class, 'loggable');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
 
     public function attachments()
     {
