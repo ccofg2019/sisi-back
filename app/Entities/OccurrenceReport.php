@@ -101,4 +101,22 @@ class OccurrenceReport extends AppModel
     {
         return $this->hasMany(InvolvedPerson::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+
+    public function logs()
+    {
+        return $this->morphMany(Logs::class, 'loggable');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+
+    public function attachments()
+    {
+        return $this->morphMany(Attachments::class, 'attachable');
+    }
 }

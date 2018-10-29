@@ -2,22 +2,22 @@
 
 namespace App\Repositories;
 
-use App\Presenters\AttachmentsPresenter;
+use App\Presenters\LogsPresenter;
 use App\Services\Traits\SoftDeletes;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Entities\Attachments;
-use App\Validators\AttachmentsValidator;
+use App\Repositories\LogsRepository;
+use App\Entities\Logs;
+use App\Validators\LogsValidator;
 
 /**
- * Class AttachmentsRepositoryEloquent.
+ * Class LogsRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class AttachmentsRepositoryEloquent extends BaseRepository implements AttachmentsRepository
+class LogsRepositoryEloquent extends BaseRepository implements LogsRepository
 {
     use SoftDeletes;
-
     /**
      * Specify Model class name
      *
@@ -25,7 +25,7 @@ class AttachmentsRepositoryEloquent extends BaseRepository implements Attachment
      */
     public function model()
     {
-        return Attachments::class;
+        return Logs::class;
     }
 
     /**
@@ -36,7 +36,7 @@ class AttachmentsRepositoryEloquent extends BaseRepository implements Attachment
     public function validator()
     {
 
-        return AttachmentsValidator::class;
+        return LogsValidator::class;
     }
 
 
@@ -53,7 +53,7 @@ class AttachmentsRepositoryEloquent extends BaseRepository implements Attachment
      */
     public function presenter()
     {
-        return AttachmentsPresenter::class;
+        return LogsPresenter::class;
     }
 
     /**
@@ -90,5 +90,8 @@ class AttachmentsRepositoryEloquent extends BaseRepository implements Attachment
 
         return $model->forceDelete();
     }
-    
+
+
+
+
 }

@@ -20,6 +20,28 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     use SoftDeletes;
 
     /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'id',
+        'cpf',
+        'email',
+        'gender',
+        'skin_color',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $fieldsRules = [
+        'id'            => ['numeric', 'max:2147483647'],
+        'cpf'           => ['numeric'],
+        'email'         => ['max:150'],
+        'gender'        => ['max:150'],
+        'skin_color'    => ['max:150'],
+    ];
+
+    /**
      * Specify Model class name
      *
      * @return string
