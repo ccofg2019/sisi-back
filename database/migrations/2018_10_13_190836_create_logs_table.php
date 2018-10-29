@@ -4,9 +4,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateAttachmentsTable.
+ * Class CreateLogsTable.
  */
-class CreateAttachmentsTable extends Migration
+class CreateLogsTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -15,23 +15,21 @@ class CreateAttachmentsTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('attachments', function(Blueprint $table) {
-
+		Schema::create('logs', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('url')->unique();
+            $table->string('action');
 
             $table->unsignedInteger('user_id')->index();
-            $table->unsignedInteger('attachable_id');
-            $table->string('attachable_type');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unsignedInteger('loggable_id')->index();
+            $table->string('loggable_type');
+
 
             $table->timestamps();
             $table->softDeletes();
-
-            $table->index(['attachable_id', 'created_at', 'deleted_at']);
 		});
-
 	}
-
 
 	/**
 	 * Reverse the migrations.
@@ -40,6 +38,6 @@ class CreateAttachmentsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('attachments');
+		Schema::drop('logs');
 	}
 }

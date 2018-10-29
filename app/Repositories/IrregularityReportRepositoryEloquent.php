@@ -2,19 +2,20 @@
 
 namespace App\Repositories;
 
-use App\Presenters\AttachmentsPresenter;
+use App\Presenters\IrregularityReportPresenter;
 use App\Services\Traits\SoftDeletes;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Entities\Attachments;
-use App\Validators\AttachmentsValidator;
+use App\Repositories\IrregularityReportRepository;
+use App\Entities\IrregularityReport;
+use App\Validators\IrregularityReportValidator;
 
 /**
- * Class AttachmentsRepositoryEloquent.
+ * Class IrregularityReportRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class AttachmentsRepositoryEloquent extends BaseRepository implements AttachmentsRepository
+class IrregularityReportRepositoryEloquent extends BaseRepository implements IrregularityReportRepository
 {
     use SoftDeletes;
 
@@ -25,7 +26,7 @@ class AttachmentsRepositoryEloquent extends BaseRepository implements Attachment
      */
     public function model()
     {
-        return Attachments::class;
+        return IrregularityReport::class;
     }
 
     /**
@@ -36,7 +37,7 @@ class AttachmentsRepositoryEloquent extends BaseRepository implements Attachment
     public function validator()
     {
 
-        return AttachmentsValidator::class;
+        return IrregularityReportValidator::class;
     }
 
 
@@ -53,7 +54,7 @@ class AttachmentsRepositoryEloquent extends BaseRepository implements Attachment
      */
     public function presenter()
     {
-        return AttachmentsPresenter::class;
+        return IrregularityReportPresenter::class;
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Traits\CrudMethods;
-use App\Repositories\AttachmentsService;
+use App\Services\AttachmentsService;
 use App\Validators\AttachmentsValidator;
 
 /**
@@ -29,7 +29,7 @@ class AttachmentsController extends Controller
     /**
      * AttachmentsController constructor.
      *
-     * @param AttachmentsService service
+     * @param AttachmentsService $service
      * @param AttachmentsValidator $validator
      */
     public function __construct(AttachmentsService $service,

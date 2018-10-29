@@ -25,9 +25,10 @@ class AttachmentsTransformer extends TransformerAbstract
             'id'                    => (int) $model->id,
 
             'url'                   => $model->url,
-            'attachable_type'       => $model->attachable_type,
-            'user_id'               => $model->user_id,
-            'attachable_id'         => $model->attachable_id,
+            'user'                  => [
+                'id'    => $model->user->id,
+                'name'  => $model->user->name
+            ],
 
             'created_at'            => $model->created_at->toDateTimeString(),
             'updated_at'            => $model->updated_at->toDateTimeString()
