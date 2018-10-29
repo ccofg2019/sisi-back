@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPoliceReportNumberToOccurrenceReportsTable extends Migration
+class AddPoliceReportCodeToOccurrenceReportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,7 @@ class AddPoliceReportNumberToOccurrenceReportsTable extends Migration
     public function up()
     {
         Schema::table('occurrence_reports', function (Blueprint $table) {
-
-            $table->string('police_report_number');
-
+            $table->string('police_report_code')->nullable();
         });
     }
 
@@ -29,7 +27,7 @@ class AddPoliceReportNumberToOccurrenceReportsTable extends Migration
     {
         Schema::table('occurrence_reports', function (Blueprint $table) {
 
-            $table->dropIfExists('police_report_number');
+            $table->dropColumn('police_report_code');
 
         });
     }
