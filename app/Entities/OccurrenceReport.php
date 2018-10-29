@@ -23,6 +23,7 @@ class OccurrenceReport extends AppModel
         'occurrence_time',
         'coordinates',
         'police_report',
+        'police_report_code',
         'estimated_loss',
         'status',
         'confidential',
