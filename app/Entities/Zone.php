@@ -40,4 +40,8 @@ class Zone extends AppModel
     {
         return $this->hasMany(OccurrenceReport::class);
     }
+
+    public function coordinate(){
+        return $this->hasOne(Coordinate::class);
+    }
 }
