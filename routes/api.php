@@ -23,18 +23,22 @@ Route::prefix('mobile')->group(function () {
 /** ROTAS FECHADAS */
 Route::middleware('auth:api')->group(function() {
 
+    /*Método resource para acessar qualquer tipo
+      de requisições http */
+
     // Users
     Route::get('/user/authenticated',           'UsersController@authenticated');
     Route::resource('/users',                   'UsersController');
     Route::resource('/roles',                   'RolesController');
 
     // Occurrences
-    Route::resource('/occurrence-reports',      'OccurrenceReportsController');
+    Route::resource('/occurrence-reports',      'OccurrenceReportsController'); 
     Route::resource('/occurrence-types',        'OccurrenceTypesController');
     Route::resource('/object',                  'OccurrenceObjectsController');
     Route::resource('/zones',                   'ZoneController');
 
     // Irregularities
+    //A api method /irregularity-reports possui o metodo de requição da api para fazer as DMLs na base de dados.
     Route::resource('/irregularity-reports',    'IrregularityReportsController');
     Route::resource('/irregularity-types',      'IrregularityTypesController');
 
