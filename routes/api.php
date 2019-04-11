@@ -32,7 +32,11 @@ Route::middleware('auth:api')->group(function() {
     Route::resource('/roles',                   'RolesController');
 
     // Occurrences
+<<<<<<< HEAD
     Route::resource('/occurrence-reports',      'OccurrenceReportsController'); 
+=======
+    Route::resource('/occurrence-reports',      'OccurrenceReportsController');//JVMN - Linha de código responsável por retornar os dados, que serão usados nos relatórios, das requisições http.
+>>>>>>> 8eec8538ab4e38c3ae222c8ae777ed4316be69d4
     Route::resource('/occurrence-types',        'OccurrenceTypesController');
     Route::resource('/object',                  'OccurrenceObjectsController');
     Route::resource('/zones',                   'ZoneController');
