@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\CrudMethods;
 use App\Services\UserService;
 use App\Validators\UserValidator;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\DataCollector\LoggerDataCollector;
 
 /**
  * Class UsersController.
@@ -48,8 +49,21 @@ class UsersController extends Controller
     public function authenticated()
     {
         $user = $this->service->getUser(true);
-        return response()->json(['data' => $user]);
+        return response()->json(['data' => $this->service->find($user->id)]);
     }  
+
+    public function store(Request $request)
+    {
+        if ($request->hasFile('image') && $request->file('image')->isValid()){
+            $extension = $request->image->extension();
+            $nameFile  = time().time().'.'.$extension;
+
+            $upload = $request->image->storeAs('users', $nameFile);
+
+            app()->request->merge(['url' => $nameFile]);
+        }
+        return $this->processStore($request);
+    }
 
 
     /**
