@@ -34,6 +34,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\AttachmentsRepository::class,        \App\Repositories\AttachmentsRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\IrregularityTypesRepository::class,  \App\Repositories\IrregularityTypesRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\IrregularityReportRepository::class, \App\Repositories\IrregularityReportRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\CoordinateRepository::class, \App\Repositories\CoordinateRepositoryEloquent::class);
         //:end-bindings:
     }
 }
