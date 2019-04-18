@@ -2,7 +2,9 @@
 
 ### Autenticar   
     url: http://104.131.99.239:5050/oauth/token
-    method: POST   
+    method: POST
+    header:
+        Accept:application/json
     body:
     {
         "grant_type": "password",   
@@ -18,9 +20,9 @@
 ### Create User
     url: http://104.131.99.239:5050/api/mobile/users
     method: POST
-    header: 
-        bearer: Content-Type:application/json
+    header:        
         Accept:application/json
+        Authorization:Bearer {{token}}
     body:
     {
         "name": *"string",
@@ -51,7 +53,6 @@
     url: http://104.131.99.239:5050/api/mobile/users
     method: GET
     header: 
-        bearer: Content-Type:application/json
         Accept:application/json
         Authorization:Bearer {{token}}
 	
@@ -59,7 +60,6 @@
     url: http://104.131.99.239:5050/api/users/{id}
     method: PUT
     header: 
-        bearer: Content-Type:application/json
         Accept:application/json
         Authorization:Bearer {{token}}
     body:
@@ -96,9 +96,9 @@
 
     url: http://104.131.99.239:5050/api/irregularity-reports
     method: POST
-    header: 
-        bearer: Content-Type:application/json
+    header:        
         Accept:application/json
+        Authorization:Bearer {{token}}
     body:
     {
         "title": "string",
@@ -118,3 +118,10 @@
     'agent_id'              => 'integer',
     'zone_id'               => 'required|integer',
     'status'                => 'in:NOVO,EM INVESTIGACAO,CONCLUIDO,ARQUIVADA'
+
+### MyList IrregularityReport
+
+    url: http://104.131.99.239:5050/api/irregularity-reports/myList
+    method: GET
+    header: 
+        Authorization:Bearer {{token}}
