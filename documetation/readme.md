@@ -32,7 +32,7 @@
         "phone": "string",
         "status": *"string",
         "email": *"string",
-        "password": *"string",
+        "password": *"string"
     }
         
 #### Validações:   
@@ -45,8 +45,7 @@
     'phone'      => 'string',   
     'email'      => 'required|email|max:150|unique:users,email',   
     'password'   => 'required|max:32|string',   
-    'status'     => 'required|in:ATIVO,BLOQUEADO,INATIVO',   
-    
+    'status'     => 'required|in:ATIVO,BLOQUEADO,INATIVO'
     
 ### List Users
     url: http://104.131.99.239:5050/api/mobile/users
@@ -75,7 +74,7 @@
         "phone": "string",
         "status": *"string",
         "email": *"string",
-        "password": *"string",
+        "password": *"string"
     }
         
 #### Validações:   
@@ -89,7 +88,7 @@
     'phone'      => 'string',   
     'email'      => 'email|max:150|unique:users,email',   
     'password'   => 'max:32|string',   
-    'status'     => 'in:ATIVO,BLOQUEADO,INATIVO', 
+    'status'     => 'in:ATIVO,BLOQUEADO,INATIVO'
 
 ## IrregularityReport
 
@@ -115,8 +114,7 @@
     'title'                 => 'required',
     'story'                 => 'required',
     'coordinates'           => 'required',
-    'user_id'               => 'required|integer',
-    'agent_id'              => 'integer',
     'irregularity_type_id'  => 'required|integer',
+    'agent_id'              => 'integer',
     'zone_id'               => 'required|integer',
     'status'                => 'in:NOVO,EM INVESTIGACAO,CONCLUIDO,ARQUIVADA'
