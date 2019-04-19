@@ -20,6 +20,24 @@ class IrregularityReportRepositoryEloquent extends BaseRepository implements Irr
     use SoftDeletes;
 
     /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'zone_id',
+        'occurrence_type_id',
+        'status'
+    ];
+
+    /**
+     * @var array
+     */
+    protected $fieldsRules = [
+        'zone_id'               => ['numeric', 'max:2147483647'],
+        'irregularity_type_id'    => ['numeric', 'max:2147483647'],
+        'status'                => ['string', 20]
+    ];
+
+    /**
      * Specify Model class name
      *
      * @return string
@@ -90,6 +108,10 @@ class IrregularityReportRepositoryEloquent extends BaseRepository implements Irr
         $model->information()->forceDelete();
 
         return $model->forceDelete();
+    }
+
+    public function myList($idUser){
+        return $this->findWhere(['user_id' => $idUser]);
     }
     
 }

@@ -7,11 +7,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class Logs.
+ * Class Attachment.
  *
  * @package namespace App\Entities;
  */
-class Logs extends Model implements Transformable
+class Attachment extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -21,31 +21,30 @@ class Logs extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
-        'action',
+        'url',
         'user_id',
-        'loggable_id',
-        'loggable_type',
+        'attachable_id',
+        'attachable_type'
     ];
 
-    /**
-     * The attributes that should be date type.
-     *
-     * @var array
-     */
+
+
     protected $dates = [
-        'created_at',
-        'updated_at',
+        'create_at',
+        'update_at',
         'deleted_at'
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+    const ATTACHABLE_TYPE_USER            = 'user';
+    const ATTACHABLE_TYPE_OCCURRENCE      = 'occurrence_report';
+    const ATTACHABLE_TYPE_IRREGULARITY    = 'irregularity_report';
+
+    public function attachments(){
+        return $this->morphTo();
     }
 
-    public function loggable()
-    {
-        return $this->morphTo();
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
 }
