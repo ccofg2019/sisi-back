@@ -50,9 +50,18 @@ class IrregularityReportsController extends Controller
      */
     public function store(Request $request)
     {
+        \var_dump($request->get('title'));
         $user = UserService::getUser(true);
 
         app()->request->merge(['user_id' => $user->id]);
         return $this->processStore($request);
+    }
+
+    public function myList(){
+        $user = UserService::getUser(true);
+        $idUser = $user->id;
+        $myIrregularityReports = $this->service->myList($idUser);
+        return \response()->json($myIrregularityReports, 200);
+
     }
 }

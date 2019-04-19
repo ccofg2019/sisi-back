@@ -109,5 +109,9 @@ class IrregularityReportRepositoryEloquent extends BaseRepository implements Irr
 
         return $model->forceDelete();
     }
+
+    public function myList($idUser){
+        return $this->findWhere(['user_id' => $idUser]);
+    }
     
 }

@@ -61,4 +61,8 @@ class IrregularityReportService extends AppService
 
         return $this->processCreate($data);
     }
+
+   public function myList($idUser){
+       return $this->repository->myList($idUser);
+   }
 }

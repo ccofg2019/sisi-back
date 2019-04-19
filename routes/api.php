@@ -40,6 +40,7 @@ Route::middleware('auth:api')->group(function() {
 
     // Irregularities
     //A api method /irregularity-reports possui o metodo de requição da api para fazer as DMLs na base de dados.
+    Route::get('/irregularity-reports/myList',  'IrregularityReportsController@myList');
     Route::resource('/irregularity-reports',    'IrregularityReportsController');
     Route::resource('/irregularity-types',      'IrregularityTypesController');
 
