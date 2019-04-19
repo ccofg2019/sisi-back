@@ -118,4 +118,8 @@ class OccurrenceReportService extends AppService
 
         return $zone;
     }
+    public function myList($idUser){
+        return $this->repository->myList($idUser);
+
+    }
 }

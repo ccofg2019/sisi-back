@@ -125,3 +125,43 @@
     method: GET
     header: 
         Authorization:Bearer {{token}}
+
+## OccurrenceReport
+
+### Create OccurrenceReport
+
+    url: http://104.131.99.239:5050/api/occurrence-reports
+    method: POST
+    header:        
+        Accept:application/json
+        Authorization:Bearer {{token}}
+    body:
+    {
+        "title": "string",
+        "story": "string",
+        "occurrence_date": "date",
+        "occurrence_time": "time"
+        "coordinates": "latitude,longitude",
+        "occurrence_type_id": "integer",
+        "agent_id": "integer",
+        "zone_id": "integer",
+        "status": "string"
+    }
+#### Validações:
+
+    'title'                 => 'required',
+    'story'                 => 'required',
+    'occurrence_date'       => 'required|date',
+	'occurrence_time'       => 'required|time',
+    'coordinates'           => 'required',
+    'occurrence_type_id'    => 'required|integer',
+    'agent_id'              => 'integer',
+    'zone_id'               => 'required|integer',
+    'status'                => 'in:NOVO,EM INVESTIGACAO,CONCLUIDO,ARQUIVADA'
+
+### MyList OccurrenceReport
+
+    url: http://104.131.99.239:5050/api/occurrence-reports/myList
+    method: GET
+    header: 
+        Authorization:Bearer {{token}}
