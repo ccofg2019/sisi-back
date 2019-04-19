@@ -108,4 +108,7 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
 
         return $model->forceDelete();
     }
+    public function myList($idUser){
+        return $this->findWhere(['user_id' => $idUser]);
+    }
 }
