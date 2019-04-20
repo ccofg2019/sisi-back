@@ -54,14 +54,14 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->hasFile('image') && $request->file('image')->isValid()){
-            $extension = $request->image->extension();
-            $nameFile  = time().time().'.'.$extension;
+        // if ($request->hasFile('image') && $request->file('image')->isValid()){
+        //     $extension = $request->image->extension();
+        //     $nameFile  = time().time().'.'.$extension;
 
-            $upload = $request->image->storeAs('users', $nameFile);
+        //     $upload = $request->image->storeAs('users', $nameFile);
 
-            app()->request->merge(['url' => $nameFile]);
-        }
+        //     app()->request->merge(['url' => $nameFile]);
+        // }
         return $this->processStore($request);
     }
 

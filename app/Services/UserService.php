@@ -66,16 +66,16 @@ class UserService extends AppService
 
         $user = $this->processCreate($data);
 
-        $user['data']['image'] = $data['url'];
+        // $user['data']['image'] = $data['url'];
 
-        if(isset($data['url'])) {
-            $this->attachmentService->upload([
-                'url'               => $data['url'],
-                'user_id'           => $user['data']['id'],
-                'attachable_id'     => $user['data']['id'],
-                'attachable_type'   => Attachment::ATTACHABLE_TYPE_USER
-            ]);
-        }
+        // if(isset($data['url'])) {
+        //     $this->attachmentService->upload([
+        //         'url'               => $data['url'],
+        //         'user_id'           => $user['data']['id'],
+        //         'attachable_id'     => $user['data']['id'],
+        //         'attachable_type'   => Attachment::ATTACHABLE_TYPE_USER
+        //     ]);
+        // }
 
         return $user;
     }
