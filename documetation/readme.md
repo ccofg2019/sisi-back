@@ -126,6 +126,22 @@
     header: 
         Authorization:Bearer {{token}}
 
+### List All IrregularityReport Of a Year
+
+    url: http://104.131.99.239:5050/api/irregularity-reports/getAllOfTheYear
+    method: GET
+    header:        
+        Accept:application/json
+        Authorization:Bearer {{token}}
+    body:
+    {
+        'year': 'integer'
+    }
+
+#### Validações:
+
+    'year': 'required'
+
 ## OccurrenceReport
 
 ### Create OccurrenceReport
