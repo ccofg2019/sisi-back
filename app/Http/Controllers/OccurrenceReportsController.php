@@ -62,4 +62,12 @@ class OccurrenceReportsController extends Controller
         return \response()->json($myOccurrenceyReports, 200);
 
     }
+
+    public function getAllOfTheYear(Request $request){
+        $year = $request->get('year');
+        
+        $query = $this->service->getAllOfTheYear($year);
+
+        return \response()->json($query, 200);
+    }
 }

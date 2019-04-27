@@ -122,4 +122,8 @@ class OccurrenceReportService extends AppService
         return $this->repository->myList($idUser);
 
     }
+
+    public function getAllOfTheYear($year){
+        return $this->repository->getAllOfTheYear($year);
+    }
 }

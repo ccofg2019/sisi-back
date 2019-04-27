@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Support\Facades\DB;
 use App\Presenters\OccurrenceReportPresenter;
 use App\Services\Traits\SoftDeletes;
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -110,5 +111,32 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
     }
     public function myList($idUser){
         return $this->findWhere(['user_id' => $idUser]);
+    }
+
+    public function getAllOfTheYear($year){
+
+        $data = array('months' => array(
+            array('name' => 'Janeiro'  , 'numOccurrence' => 0),
+            array('name' => 'Fevereiro', 'numOccurrence' => 0),
+            array('name' => 'Março'    , 'numOccurrence' => 0),
+            array('name' => 'Abril'    , 'numOccurrence' => 0),
+            array('name' => 'Maio'     , 'numOccurrence' => 0),
+            array('name' => 'Junho'    , 'numOccurrence' => 0),
+            array('name' => 'Julho'    , 'numOccurrence' => 0),
+            array('name' => 'Agosto'   , 'numOccurrence' => 0),
+            array('name' => 'Setembro' , 'numOccurrence' => 0),
+            array('name' => 'Outubro'  , 'numOccurrence' => 0),
+            array('name' => 'Novembro' , 'numOccurrence' => 0),
+            array('name' => 'Dezembro' , 'numOccurrence' => 0)            
+        ));
+        for($i = 1; $i <= 12; $i++){
+            
+            $query = $this->findWhere([
+                [DB::raw('YEAR(occurrence_date)'), '=', $year],
+                [DB::raw('MONTH(occurrence_date)'), '=', $i]            
+            ]);            
+            $data['months'][$i - 1]['numOccurrence'] = \count($query['data']); 
+        }
+        return $data;        
     }
 }
