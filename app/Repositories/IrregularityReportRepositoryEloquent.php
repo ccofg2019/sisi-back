@@ -9,6 +9,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\IrregularityReportRepository;
 use App\Entities\IrregularityReport;
 use App\Validators\IrregularityReportValidator;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class IrregularityReportRepositoryEloquent.
@@ -113,5 +114,32 @@ class IrregularityReportRepositoryEloquent extends BaseRepository implements Irr
     public function myList($idUser){
         return $this->findWhere(['user_id' => $idUser]);
     }
-    
+
+    public function getAllOfTheYear($year){
+        $data = array('months' => array(
+            array('name' => 'Janeiro'  , 'numIrregularity' => 0),
+            array('name' => 'Fevereiro', 'numIrregularity' => 0),
+            array('name' => 'Março'    , 'numIrregularity' => 0),
+            array('name' => 'Abril'    , 'numIrregularity' => 0),
+            array('name' => 'Maio'     , 'numIrregularity' => 0),
+            array('name' => 'Junho'    , 'numIrregularity' => 0),
+            array('name' => 'Julho'    , 'numIrregularity' => 0),
+            array('name' => 'Agosto'   , 'numIrregularity' => 0),
+            array('name' => 'Setembro' , 'numIrregularity' => 0),
+            array('name' => 'Outubro'  , 'numIrregularity' => 0),
+            array('name' => 'Novembro' , 'numIrregularity' => 0),
+            array('name' => 'Dezembro' , 'numIrregularity' => 0)            
+        ));
+
+        for($i = 1; $i <= 12; $i++){
+            
+            $query = $this->findWhere([
+                [DB::raw('YEAR(created_at)'), '=', $year],
+                [DB::raw('MONTH(created_at)'), '=', $i]            
+            ]);            
+            $data['months'][$i - 1]['numIrregularity'] = \count($query['data']); 
+        }
+
+        return $data;   
+    }    
 }

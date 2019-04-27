@@ -64,4 +64,12 @@ class IrregularityReportsController extends Controller
         return \response()->json($myIrregularityReports, 200);
 
     }
+
+    public function getAllOfTheYear(Request $request){
+        $year = $request->get('year');
+        
+        $query = $this->service->getAllOfTheYear($year);
+
+        return \response()->json($query, 200);
+    }
 }

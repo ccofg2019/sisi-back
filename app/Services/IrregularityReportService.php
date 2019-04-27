@@ -65,4 +65,8 @@ class IrregularityReportService extends AppService
    public function myList($idUser){
        return $this->repository->myList($idUser);
    }
+
+   public function getAllOfTheYear($year){
+       return $this->repository->getAllOfTheYear($year);
+   }
 }
