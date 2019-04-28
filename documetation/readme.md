@@ -50,7 +50,7 @@
     'status'     => 'required|in:ATIVO,BLOQUEADO,INATIVO'
     
 ### List Users
-    url: http://104.131.99.239:5050/api/mobile/users
+    url: http://104.131.99.239:5050/api/users
     method: GET
     header: 
         Accept:application/json
