@@ -2,15 +2,15 @@
 
 namespace App\Presenters;
 
-use App\Transformers\IrregularityTypesTransformer;
+use App\Transformers\CoordinateTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
- * Class IrregularityTypesPresenter.
+ * Class CoordinatePresenter.
  *
  * @package namespace App\Presenters;
  */
-class IrregularityTypesPresenter extends FractalPresenter
+class CoordinatePresenter extends FractalPresenter
 {
     /**
      * Transformer
@@ -19,6 +19,6 @@ class IrregularityTypesPresenter extends FractalPresenter
      */
     public function getTransformer()
     {
-        return new IrregularityTypesTransformer();
+        return new CoordinateTransformer();
     }
 }

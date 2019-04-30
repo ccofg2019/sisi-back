@@ -6,11 +6,11 @@ use \Prettus\Validator\Contracts\ValidatorInterface;
 use \Prettus\Validator\LaravelValidator;
 
 /**
- * Class InvolvedPersonValidator.
+ * Class CoordinateValidator.
  *
  * @package namespace App\Validators;
  */
-class InvolvedPersonValidator extends LaravelValidator
+class CoordinateValidator extends LaravelValidator
 {
     /**
      * Validation Rules
@@ -18,9 +18,7 @@ class InvolvedPersonValidator extends LaravelValidator
      * @var array
      */
     protected $rules = [
-        ValidatorInterface::RULE_CREATE => [
-            'type'  => 'require'
-        ],
+        ValidatorInterface::RULE_CREATE => [],
         ValidatorInterface::RULE_UPDATE => [],
     ];
 }

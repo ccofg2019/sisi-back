@@ -2,15 +2,15 @@
 
 namespace App\Presenters;
 
-use App\Transformers\LogsTransformer;
+use App\Transformers\IrregularityTypesTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
- * Class LogsPresenter.
+ * Class IrregularityTypePresenter.
  *
  * @package namespace App\Presenters;
  */
-class LogsPresenter extends FractalPresenter
+class IrregularityTypePresenter extends FractalPresenter
 {
     /**
      * Transformer
@@ -19,6 +19,6 @@ class LogsPresenter extends FractalPresenter
      */
     public function getTransformer()
     {
-        return new LogsTransformer();
+        return new IrregularityTypesTransformer();
     }
 }

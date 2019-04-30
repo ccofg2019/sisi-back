@@ -50,11 +50,24 @@ class IrregularityReportsController extends Controller
      */
     public function store(Request $request)
     {
+        \var_dump($request->get('title'));
         $user = UserService::getUser(true);
-
-//        \Log::debug($request->all());
 
         app()->request->merge(['user_id' => $user->id]);
         return $this->processStore($request);
+    }
+
+    public function myList(){
+        $user = UserService::getUser(true);
+        $idUser = $user->id;
+        $myIrregularityReports = $this->service->myList($idUser);
+        return \response()->json($myIrregularityReports, 200);
+
+    }
+
+    public function getAllOfTheYear($year){        
+        $query = $this->service->getAllOfTheYear($year);
+
+        return \response()->json($query, 200);
     }
 }

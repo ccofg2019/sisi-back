@@ -54,4 +54,18 @@ class OccurrenceReportsController extends Controller
         app()->request->merge(['user_id' => $user->id]);
         return $this->processStore($request);
     }
+
+    public function myList(){
+        $user = UserService::getUser(true);
+        $idUser = $user->id;
+        $myOccurrenceyReports = $this->service->myList($idUser);
+        return \response()->json($myOccurrenceyReports, 200);
+
+    }
+
+    public function getAllOfTheYear($year){        
+        $query = $this->service->getAllOfTheYear($year);
+
+        return \response()->json($query, 200);
+    }
 }
