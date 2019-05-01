@@ -128,19 +128,15 @@
 
 ### List All IrregularityReport Of a Year
 
-    url: http://104.131.99.239:5050/api/irregularity-reports/getAllOfTheYear
+    url: http://104.131.99.239:5050/api/irregularity-reports/getAllOfTheYear/{year}
     method: GET
     header:        
         Accept:application/json
         Authorization:Bearer {{token}}
-    body:
-    {
-        'year': 'integer'
-    }
 
 #### Validações:
 
-    'year': 'required'
+    'year': 'required|integer'
 
 ## OccurrenceReport
 
@@ -184,15 +180,11 @@
 
 ### List All OccurrenceReport Of a Year
 
-    url: http://104.131.99.239:5050/api/occurrence-reports/getAllOfTheYear
+    url: http://104.131.99.239:5050/api/occurrence-reports/getAllOfTheYear/{year}
     method: GET
     header:        
         Accept:application/json
         Authorization:Bearer {{token}}
-    body:
-    {
-        'year': 'integer'
-    }
 #### Validações:
 
-    'year': 'required'
+    'year': 'required|integer'
