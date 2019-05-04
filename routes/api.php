@@ -33,8 +33,8 @@ Route::resource('/users',                   'UsersController');
 Route::resource('/roles',                   'RolesController');
 
 // Occurrences
-Route::get('/occurrence-reports/getAllOfTheYear/{year}',  'occurrenceReportsController@getAllOfTheYear');
-Route::get('/occurrence-reports/myList',  'occurrenceReportsController@myList');
+Route::get('/occurrence-reports/getAllOfTheYear/{year}',  'OccurrenceReportsController@getAllOfTheYear');
+Route::get('/occurrence-reports/myList',  'OccurrenceReportsController@myList');
 Route::resource('/occurrence-reports',      'OccurrenceReportsController');//JVMN - Linha de código responsável por retornar os dados, que serão usados nos relatórios, das requisições http.
 Route::resource('/occurrence-types',        'OccurrenceTypesController');
 Route::resource('/object',                  'OccurrenceObjectsController');
