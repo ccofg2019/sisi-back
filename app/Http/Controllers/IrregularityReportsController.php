@@ -65,8 +65,14 @@ class IrregularityReportsController extends Controller
 
     }
 
-    public function getAllOfTheYear($year){        
-        $query = $this->service->getAllOfTheYear($year);
+    public function getAllOfTheYear(Request $request){
+        $year = $request->get('year');
+        $month = $request->get('month');
+        $idOccurrenceType = $request->get('idIrregularityType');
+        $data = array('year' => $year,
+                      'month' => $month,
+                      'idIrregularityType' => $idOccurrenceType);        
+        $query = $this->service->getAllOfTheYear($data);
 
         return \response()->json($query, 200);
     }

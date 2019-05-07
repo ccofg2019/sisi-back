@@ -128,7 +128,7 @@
 
 ### List All IrregularityReport Of a Year
 
-    url: http://104.131.99.239:5050/api/irregularity-reports/getAllOfTheYear/{year}
+    url: http://104.131.99.239:5050/api/irregularity-reports/getAllOfTheYear?{year}&{month}&{idIrregularityType}
     method: GET
     header:        
         Accept:application/json
@@ -136,7 +136,9 @@
 
 #### Validações:
 
-    'year': 'required|integer'
+    'year': 'integer',
+    'month': 'integer',
+    'idIrregularityType': 'integer',
 
 ## OccurrenceReport
 
