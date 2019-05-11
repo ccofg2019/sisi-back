@@ -45,6 +45,7 @@ class IrregularityReportService extends AppService
     public function all($limit = 20)
     {
         $this->repository
+            ->orderBy('id', 'desc')
             ->resetCriteria()
             ->pushCriteria(app('App\Criterias\AppRequestCriteria'));
 
