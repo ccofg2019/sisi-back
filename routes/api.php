@@ -47,4 +47,5 @@ Route::get('/irregularity-reports/myList',  'IrregularityReportsController@myLis
 Route::resource('/irregularity-reports',    'IrregularityReportsController');
 Route::resource('/irregularity-types',      'IrregularityTypesController');
 
+Route::resource('/emergency', 'EmergencyController');
 });
