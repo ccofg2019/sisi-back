@@ -7,6 +7,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\EmergencyRepository;
 use App\Entities\Emergency;
 use App\Validators\EmergencyValidator;
+use App\Emergency as AppEmergency;
 
 /**
  * Class EmergencyRepositoryEloquent.
@@ -37,5 +38,12 @@ class EmergencyRepositoryEloquent extends BaseRepository implements EmergencyRep
     
     public function createNewEmergency($user_id){
         return $this->create(['user_id' => $user_id]);
+    }
+
+    public function changeStatus(AppEmergency $data){
+        $id = $data->id;
+        $status = $data->status;
+
+        $this->update(['status' => $status], $id);
     }
 }

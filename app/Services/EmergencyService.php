@@ -9,6 +9,7 @@ use App\Repositories\EmergencyRepository;
 use App\Entities\PositionEmergency;
 use App\Repositories\PositionEmergencyRepository;
 use App\PositionEmergency as AppPositionEmergency;
+use App\Emergency;
 
 /**
  * Class ZoneService
@@ -69,4 +70,8 @@ class EmergencyService extends AppService
     public function insertPosition(AppPositionEmergency $data){
         return $this->repositoryPositionEmergency->insert($data);
     }    
+
+    public function changeStatus(Emergency $data){
+        $this->repository->changeStatus($data);
+    }
 }

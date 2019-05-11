@@ -9,6 +9,8 @@ use App\Services\UserService;
 use App\Http\Requests\StoreEmergencyRequest;
 use App\Http\Requests\InsertNewPositionEmergencyRequest;
 use App\PositionEmergency;
+use App\Http\Requests\ChangeStatusEmergency;
+use App\Emergency;
 
 /**
  * Class EmergencyController.
@@ -66,6 +68,15 @@ class EmergencyController extends Controller
         $this->service->insertPosition($positionEmergency);
         
         return \response()->json('', 201);
+     }
+
+     public function changeStatus(ChangeStatusEmergency $request){
+        $emergency_id = $request->get('emergency_id');
+        $status = $request->get('status');
+
+        $emergency = new Emergency($emergency_id, $status);
+
+        $this->service->changeStatus($emergency);
      }
 
 }

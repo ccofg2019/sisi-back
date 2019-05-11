@@ -24,7 +24,7 @@ class CreateEmergenciesTable extends Migration
             $table->unsignedInteger('agent_id')->nullable();;
             $table->foreign('agent_id')->references('id')->on('users');
 
-            $table->enum('status', ['ALERTA', 'EMERGENCIA', 'FINALIZADO'])->default('ALERTA');
+            $table->enum('status', ['ALERTA', 'PERIGO', 'FINALIZADO'])->default('ALERTA');
             
             $table->timestamps();
 		});

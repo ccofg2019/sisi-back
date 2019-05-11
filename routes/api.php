@@ -49,6 +49,7 @@ Route::resource('/irregularity-types',      'IrregularityTypesController');
 
 // Emergencies
 Route::post('/emergency/insertNewPosition', 'EmergencyController@insertNewPosition');
+Route::post('/emergency/changeStatus', 'EmergencyController@changeStatus');
 Route::resource('/emergency', 'EmergencyController');
 
 
