@@ -138,7 +138,7 @@
 
     'year': 'integer',
     'month': 'integer',
-    'idIrregularityType': 'integer',
+    'idIrregularityType': 'integer'
 
 ## OccurrenceReport
 
@@ -192,3 +192,22 @@
     'year': 'integer',
     'month': 'integer',
     'idOccurrenceType': 'integer'
+
+## Emergency
+
+### Create Emergency
+
+    url: http://104.131.99.239:5050/api/emergency
+    method: POST
+    header:        
+        Accept:application/json
+        Authorization:Bearer {{token}}
+    body:
+    {
+        'latitude': 'numeric',
+        'longitude': 'numeric'
+    }
+### Validações:
+
+    'latitude':  'required|numeric|between:-99.99999999, 99.99999999',
+    'longitude': 'required|numeric|between:-999.99999999, 999.99999999'
