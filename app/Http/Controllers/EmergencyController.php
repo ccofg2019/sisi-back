@@ -77,6 +77,8 @@ class EmergencyController extends Controller
         $emergency = new Emergency($emergency_id, $status);
 
         $this->service->changeStatus($emergency);
+
+        return \response()->json('', 200);
      }
 
 }

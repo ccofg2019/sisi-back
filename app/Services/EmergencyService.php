@@ -56,15 +56,13 @@ class EmergencyService extends AppService
         $latitude = $data['position']['latitude'];
         $longitude = $data['position']['longitude'];
 
-        // $dataPosition = array('emergency_id' => $emergency_id,
-        //                       'position' => array(
-        //                           'latitude' => $latitude,
-        //                           'longitude' => $longitude 
-        //                       ));
         $positionEmergency = new AppPositionEmergency($emergency_id, $latitude, $longitude);
 
         $position = $this->insertPosition($positionEmergency);
-        return $position;
+        
+        $newData = $this->repository->takeEmergency($emergency_id);
+        \printf($newData);
+        return $newData;
     }
 
     public function insertPosition(AppPositionEmergency $data){
