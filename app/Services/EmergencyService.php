@@ -8,6 +8,7 @@ use App\Services\Traits\CrudMethods;
 use App\Repositories\EmergencyRepository;
 use App\Entities\PositionEmergency;
 use App\Repositories\PositionEmergencyRepository;
+use App\PositionEmergency as AppPositionEmergency;
 
 /**
  * Class ZoneService
@@ -54,18 +55,18 @@ class EmergencyService extends AppService
         $latitude = $data['position']['latitude'];
         $longitude = $data['position']['longitude'];
 
-        $dataPosition = array('emergency_id' => $emergency_id,
-                              'position' => array(
-                                  'latitude' => $latitude,
-                                  'longitude' => $longitude 
-                              ));
-        $position = $this->insertFirsPosition($dataPosition);
+        // $dataPosition = array('emergency_id' => $emergency_id,
+        //                       'position' => array(
+        //                           'latitude' => $latitude,
+        //                           'longitude' => $longitude 
+        //                       ));
+        $positionEmergency = new AppPositionEmergency($emergency_id, $latitude, $longitude);
+
+        $position = $this->insertPosition($positionEmergency);
         return $position;
     }
 
-    private function insertFirsPosition($data){
+    public function insertPosition(AppPositionEmergency $data){
         return $this->repositoryPositionEmergency->insert($data);
-    }
-
-    
+    }    
 }

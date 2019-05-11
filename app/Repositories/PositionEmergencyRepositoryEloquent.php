@@ -7,6 +7,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\PositionEmergencyRepository;
 use App\Entities\PositionEmergency;
 use App\Validators\PositionEmergencyValidator;
+use App\PositionEmergency as AppPositionEmergency;
 
 /**
  * Class PositionEmergencyRepositoryEloquent.
@@ -35,10 +36,10 @@ class PositionEmergencyRepositoryEloquent extends BaseRepository implements Posi
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
-    public function insert($data){
-        $emergency_id = $data['emergency_id'];
-        $latitude = $data['position']['latitude'];
-        $longitude = $data['position']['longitude'];
+    public function insert(AppPositionEmergency $data){
+        $emergency_id = $data->emergency_id;
+        $latitude = $data->latitude;
+        $longitude = $data->longitude;
         return $this->create(['emergency_id' => $emergency_id,
                               'latitude' => $latitude,
                               'longitude' => $longitude]);

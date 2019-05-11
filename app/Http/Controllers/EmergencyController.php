@@ -7,6 +7,8 @@ use App\Validators\EmergencyValidator;
 use App\Services\EmergencyService;
 use App\Services\UserService;
 use App\Http\Requests\StoreEmergencyRequest;
+use App\Http\Requests\InsertNewPositionEmergencyRequest;
+use App\PositionEmergency;
 
 /**
  * Class EmergencyController.
@@ -52,6 +54,18 @@ class EmergencyController extends Controller
 
         $data2 = $this->service->insert($data);
         return \response()->json($data, 201);        
+     }
+
+     public function insertNewPosition(InsertNewPositionEmergencyRequest $request){
+        $emergency_id = $request->get('emergency_id');
+        $latitude = $request->get('latitude');
+        $longitude = $request->get('longitude');
+
+        $positionEmergency = new PositionEmergency($emergency_id, $latitude, $longitude);
+        
+        $this->service->insertPosition($positionEmergency);
+        
+        return \response()->json('', 201);
      }
 
 }

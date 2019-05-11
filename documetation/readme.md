@@ -211,3 +211,22 @@
 
     'latitude':  'required|numeric|between:-99.99999999, 99.99999999',
     'longitude': 'required|numeric|between:-999.99999999, 999.99999999'
+
+### Create a New Position for an Existing Emergency
+
+    url: http://104.131.99.239:5050/api/emergency/insertNewPosition
+    method: POST
+    header:        
+        Accept:application/json
+        Authorization:Bearer {{token}}
+    body:
+    {
+        'emergency_id': 'integer'
+        'latitude': 'numeric',
+        'longitude': 'numeric'
+    }
+### Validações:
+
+    'emergency_id' => 'required|integer', 
+    'latitude'     => 'required|numeric|between:-99.99999999, 99.99999999',
+    'longitude'    => 'required|numeric|between:-999.99999999, 999.99999999'

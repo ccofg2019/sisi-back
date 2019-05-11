@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 
 
 /*
@@ -47,5 +47,9 @@ Route::get('/irregularity-reports/myList',  'IrregularityReportsController@myLis
 Route::resource('/irregularity-reports',    'IrregularityReportsController');
 Route::resource('/irregularity-types',      'IrregularityTypesController');
 
+// Emergencies
+Route::post('/emergency/insertNewPosition', 'EmergencyController@insertNewPosition');
 Route::resource('/emergency', 'EmergencyController');
+
+
 });
