@@ -123,7 +123,10 @@ class OccurrenceReportService extends AppService
 
     }
 
-    public function getAllOfTheYear($year){
-        return $this->repository->getAllOfTheYear($year);
+    public function getAllOfTheYear($data){
+        $year = $data['year'];
+        $month = $data['month'];     
+        $idOccurrenceType = $data['idOccurrenceType'];   
+        return $this->repository->getAllOfTheYear($year, $month, $idOccurrenceType);
     }
 }

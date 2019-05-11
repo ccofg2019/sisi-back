@@ -115,7 +115,7 @@ class IrregularityReportRepositoryEloquent extends BaseRepository implements Irr
         return $this->findWhere(['user_id' => $idUser]);
     }
 
-    public function getAllOfTheYear($year){
+    public function getAllOfTheYear($year, $month, $idIrregularityType){
         $data = array('months' => array(
             array('name' => 'Janeiro'  , 'numIrregularity' => 0),
             array('name' => 'Fevereiro', 'numIrregularity' => 0),
@@ -131,15 +131,42 @@ class IrregularityReportRepositoryEloquent extends BaseRepository implements Irr
             array('name' => 'Dezembro' , 'numIrregularity' => 0)            
         ));
 
-        for($i = 1; $i <= 12; $i++){
-            
-            $query = $this->findWhere([
-                [DB::raw('YEAR(created_at)'), '=', $year],
-                [DB::raw('MONTH(created_at)'), '=', $i]            
-            ]);            
-            $data['months'][$i - 1]['numIrregularity'] = \count($query['data']); 
+        $filterWithMonthYear = $month != 0;
+        if($filterWithMonthYear){
+            $monthInArray = $month - 1;
+            $query = $this->ListIrregularityWithYearMonth($year, $month, $idIrregularityType);            
+            $data['months'][$monthInArray]['numIrregularity'] = \count($query['data']);
+            // \var_dump($data['months'][8]);
+            for($i = 0; $i <= 11; $i++){
+                if($i != $monthInArray){
+                    unset($data['months'][$i]);
+                }
+            }
+            $newData = array('months' => array(
+                array('name' => $data['months'][$monthInArray]['name'],
+                      'numIrregularity' => $data['months'][$monthInArray]['numIrregularity'])
+            ));
+            $data = $newData;
+        }else{
+            for($i = 1; $i <= 12; $i++){            
+                $query = $this->ListIrregularityWithYearMonth($year, $i, $idIrregularityType);
+                $data['months'][$i - 1]['numIrregularity'] = \count($query['data']); 
+            }
         }
-
         return $data;   
-    }    
+    }
+
+    public function ListIrregularityWithYearMonth($year, $month, $idIrregularityType){
+        if($idIrregularityType != 0){
+            return $this->findWhere([
+                [DB::raw('YEAR(created_at)'), '=', $year],
+                [DB::raw('MONTH(created_at)'), '=', $month],
+                ['irregularity_type_id', '=', $idIrregularityType]          
+            ]);    
+        }
+        return $this->findWhere([
+            [DB::raw('YEAR(created_at)'), '=', $year],
+            [DB::raw('MONTH(created_at)'), '=', $month]            
+        ]); 
+    }
 }

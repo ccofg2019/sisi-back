@@ -7,6 +7,7 @@ use App\Services\OccurrenceReportService;
 use App\Services\UserService;
 use App\Validators\OccurrenceReportValidator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 /**
  * Class OccurrenceReportsController.
@@ -63,8 +64,14 @@ class OccurrenceReportsController extends Controller
 
     }
 
-    public function getAllOfTheYear($year){        
-        $query = $this->service->getAllOfTheYear($year);
+    public function getAllOfTheYear(Request $request){    
+        $year = $request->get('year');
+        $month = $request->get('month');
+        $idOccurrenceType = $request->get('idOccurrenceType');
+        $data = array('year' => $year,
+                      'month' => $month,
+                      'idOccurrenceType' => $idOccurrenceType);
+        $query = $this->service->getAllOfTheYear($data);
 
         return \response()->json($query, 200);
     }
