@@ -140,6 +140,15 @@
     'month': 'integer',
     'idIrregularityType': 'integer'
 
+## IrregularityType
+
+### List IrregularityType
+
+    url: http://104.131.99.239:5050/api/irregularity-types
+    method: GET
+    header: 
+        Authorization:Bearer {{token}}
+
 ## OccurrenceReport
 
 ### Create OccurrenceReport
@@ -192,6 +201,15 @@
     'year': 'integer',
     'month': 'integer',
     'idOccurrenceType': 'integer'
+
+## OccurrenceType
+
+### List OccurrenceType
+
+    url: http://104.131.99.239:5050/api/occurrence-types
+    method: GET
+    header: 
+        Authorization:Bearer {{token}}
 
 ## Emergency
 
