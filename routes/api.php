@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 
 
 /*
@@ -33,7 +33,7 @@ Route::resource('/users',                   'UsersController');
 Route::resource('/roles',                   'RolesController');
 
 // Occurrences
-Route::get('/occurrence-reports/getAllOfTheYear/{year}',  'OccurrenceReportsController@getAllOfTheYear');
+Route::get('/occurrence-reports/getAllOfTheYear',  'OccurrenceReportsController@getAllOfTheYear');
 Route::get('/occurrence-reports/myList',  'OccurrenceReportsController@myList');
 Route::resource('/occurrence-reports',      'OccurrenceReportsController');//JVMN - Linha de código responsável por retornar os dados, que serão usados nos relatórios, das requisições http.
 Route::resource('/occurrence-types',        'OccurrenceTypesController');
@@ -42,9 +42,15 @@ Route::resource('/zones',                   'ZoneController');
 
 // Irregularities
 //A api method /irregularity-reports possui o metodo de requição da api para fazer as DMLs na base de dados.
-Route::get('/irregularity-reports/getAllOfTheYear/{year}',  'IrregularityReportsController@getAllOfTheYear');
+Route::get('/irregularity-reports/getAllOfTheYear',  'IrregularityReportsController@getAllOfTheYear');
 Route::get('/irregularity-reports/myList',  'IrregularityReportsController@myList');
 Route::resource('/irregularity-reports',    'IrregularityReportsController');
 Route::resource('/irregularity-types',      'IrregularityTypesController');
+
+// Emergencies
+Route::post('/emergency/insertNewPosition', 'EmergencyController@insertNewPosition');
+Route::post('/emergency/changeStatus', 'EmergencyController@changeStatus');
+Route::resource('/emergency', 'EmergencyController');
+
 
 });

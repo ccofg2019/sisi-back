@@ -45,6 +45,7 @@ class IrregularityReportService extends AppService
     public function all($limit = 20)
     {
         $this->repository
+            ->orderBy('id', 'desc')
             ->resetCriteria()
             ->pushCriteria(app('App\Criterias\AppRequestCriteria'));
 
@@ -66,7 +67,10 @@ class IrregularityReportService extends AppService
        return $this->repository->myList($idUser);
    }
 
-   public function getAllOfTheYear($year){
-       return $this->repository->getAllOfTheYear($year);
+   public function getAllOfTheYear($data){
+       $year = $data['year'];
+       $month = $data['month'];     
+       $idIrregularityType = $data['idIrregularityType'];   
+       return $this->repository->getAllOfTheYear($year, $month, $idIrregularityType);
    }
 }

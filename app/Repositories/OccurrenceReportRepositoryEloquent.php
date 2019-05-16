@@ -113,8 +113,7 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
         return $this->findWhere(['user_id' => $idUser]);
     }
 
-    public function getAllOfTheYear($year){
-
+    public function getAllOfTheYear($year, $month, $idOccurrenceType){
         $data = array('months' => array(
             array('name' => 'Janeiro'  , 'numOccurrence' => 0),
             array('name' => 'Fevereiro', 'numOccurrence' => 0),
@@ -129,14 +128,44 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
             array('name' => 'Novembro' , 'numOccurrence' => 0),
             array('name' => 'Dezembro' , 'numOccurrence' => 0)            
         ));
-        for($i = 1; $i <= 12; $i++){
-            
-            $query = $this->findWhere([
-                [DB::raw('YEAR(occurrence_date)'), '=', $year],
-                [DB::raw('MONTH(occurrence_date)'), '=', $i]            
-            ]);            
-            $data['months'][$i - 1]['numOccurrence'] = \count($query['data']); 
-        }
+
+        $filterWithMonthYear = $month != 0;
+        if($filterWithMonthYear){
+            $monthInArray = $month - 1;
+            $query = $this->ListOccurrenceWithYearMonth($year, $month, $idOccurrenceType);            
+            $data['months'][$monthInArray]['numOccurrence'] = \count($query['data']);
+            // \var_dump($data['months'][8]);
+            for($i = 0; $i <= 11; $i++){
+                if($i != $monthInArray){
+                    unset($data['months'][$i]);
+                }
+            }
+            $newData = array('months' => array(
+                array('name' => $data['months'][$monthInArray]['name'],
+                      'numOccurrence' => $data['months'][$monthInArray]['numOccurrence'])
+            ));
+            $data = $newData;
+        }else{
+            for($i = 1; $i <= 12; $i++){            
+                $query = $this->ListOccurrenceWithYearMonth($year, $i, $idOccurrenceType);
+                $data['months'][$i - 1]['numOccurrence'] = \count($query['data']); 
+            }
+        }       
+        
         return $data;        
+    }
+
+    private function ListOccurrenceWithYearMonth($year, $month, $idOccurrenceType){
+        if($idOccurrenceType != 0){
+            return $this->findWhere([
+                [DB::raw('YEAR(occurrence_date)'), '=', $year],
+                [DB::raw('MONTH(occurrence_date)'), '=', $month],
+                ['occurrence_type_id', '=', $idOccurrenceType]          
+            ]);    
+        }
+        return $this->findWhere([
+            [DB::raw('YEAR(occurrence_date)'), '=', $year],
+            [DB::raw('MONTH(occurrence_date)'), '=', $month]            
+        ]);  
     }
 }

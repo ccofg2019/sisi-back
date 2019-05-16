@@ -128,7 +128,7 @@
 
 ### List All IrregularityReport Of a Year
 
-    url: http://104.131.99.239:5050/api/irregularity-reports/getAllOfTheYear/{year}
+    url: http://104.131.99.239:5050/api/irregularity-reports/getAllOfTheYear?{year}&{month}&{idIrregularityType}
     method: GET
     header:        
         Accept:application/json
@@ -136,7 +136,18 @@
 
 #### Validações:
 
-    'year': 'required|integer'
+    'year': 'integer',
+    'month': 'integer',
+    'idIrregularityType': 'integer'
+
+## IrregularityType
+
+### List IrregularityType
+
+    url: http://104.131.99.239:5050/api/irregularity-types
+    method: GET
+    header: 
+        Authorization:Bearer {{token}}
 
 ## OccurrenceReport
 
@@ -180,11 +191,77 @@
 
 ### List All OccurrenceReport Of a Year
 
-    url: http://104.131.99.239:5050/api/occurrence-reports/getAllOfTheYear/{year}
+    url: http://104.131.99.239:5050/api/occurrence-reports/getAllOfTheYear?{year}&{month}&{idOccurrenceType}
     method: GET
     header:        
         Accept:application/json
         Authorization:Bearer {{token}}
 #### Validações:
 
-    'year': 'required|integer'
+    'year': 'integer',
+    'month': 'integer',
+    'idOccurrenceType': 'integer'
+
+## OccurrenceType
+
+### List OccurrenceType
+
+    url: http://104.131.99.239:5050/api/occurrence-types
+    method: GET
+    header: 
+        Authorization:Bearer {{token}}
+
+## Emergency
+
+### Create Emergency
+
+    url: http://104.131.99.239:5050/api/emergency
+    method: POST
+    header:        
+        Accept:application/json
+        Authorization:Bearer {{token}}
+    body:
+    {
+        'latitude': 'numeric',
+        'longitude': 'numeric'
+    }
+### Validações:
+
+    'latitude':  'required|numeric|between:-99.99999999, 99.99999999',
+    'longitude': 'required|numeric|between:-999.99999999, 999.99999999'
+
+### Create a New Position for an Existing Emergency
+
+    url: http://104.131.99.239:5050/api/emergency/insertNewPosition
+    method: POST
+    header:        
+        Accept:application/json
+        Authorization:Bearer {{token}}
+    body:
+    {
+        'emergency_id': 'integer'
+        'latitude': 'numeric',
+        'longitude': 'numeric'
+    }
+### Validações:
+
+    'emergency_id' => 'required|integer', 
+    'latitude'     => 'required|numeric|between:-99.99999999, 99.99999999',
+    'longitude'    => 'required|numeric|between:-999.99999999, 999.99999999'
+
+### Alter Status Emergency
+
+    url: http://104.131.99.239:5050/api/emergency/changeStatus
+    method: POST
+    header:        
+        Accept:application/json
+        Authorization:Bearer {{token}}
+    body:
+    {
+        'emergency_id': 'integer',
+        'status': 'string'      
+    }
+### Validações:
+
+    'emergency_id': 'required|integer',
+    'status': 'required|in:ALERTA,PERIGO,FINALIZADO'      
