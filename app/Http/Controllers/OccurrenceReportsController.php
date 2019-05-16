@@ -75,4 +75,9 @@ class OccurrenceReportsController extends Controller
 
         return \response()->json($query, 200);
     }
+
+    public function listOccurrenceOfAYearAgo(){
+        $query = $this->service->listOccurrenceOfAYearAgo();
+        return \response()->json($query, 200);
+    }
 }

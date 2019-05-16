@@ -168,4 +168,12 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
             [DB::raw('MONTH(occurrence_date)'), '=', $month]            
         ]);  
     }
+
+    public function listOccurrenceOfAYearAgo(){
+        $query = $this->findWhere([
+            ['occurrence_date', '>=', DB::raw('DATE_SUB(CURDATE(),INTERVAL 1 YEAR)')],
+            ['occurrence_date', '<=', DB::raw('date(NOW())')]
+        ]);
+        return $query;            
+    }
 }
