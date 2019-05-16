@@ -50,7 +50,6 @@ class IrregularityReportsController extends Controller
      */
     public function store(Request $request)
     {
-        \var_dump($request->get('title'));
         $user = UserService::getUser(true);
 
         app()->request->merge(['user_id' => $user->id]);
