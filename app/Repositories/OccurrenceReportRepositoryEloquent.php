@@ -176,4 +176,13 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
         ]);
         return $query;            
     }
+
+    public function listAllOccurrenceOFAIntervalDate($idTypeOccurrence, $date_start, $date_end){
+        $query = $this->findWhere([
+            ['occurrence_type_id', '=',  $idTypeOccurrence],
+            [DB::raw('date(occurrence_date)'),    '>=', $date_start],
+            [DB::raw('date(occurrence_date)'),    '<=', $date_end]
+        ]);
+        return $query;
+    }
 }
