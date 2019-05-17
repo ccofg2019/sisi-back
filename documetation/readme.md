@@ -202,6 +202,13 @@
     'month': 'integer',
     'idOccurrenceType': 'integer'
 
+### List All OccurrenceReport Of a Year Ago
+
+    url: http://104.131.99.239:5050/api/occurrence-reports/listOccurrenceOfAYearAgo
+    method: GET
+    header: 
+        Authorization:Bearer {{token}}
+
 ## OccurrenceType
 
 ### List OccurrenceType
