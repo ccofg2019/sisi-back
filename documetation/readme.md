@@ -308,3 +308,10 @@
 
     'emergency_id': 'required|integer',
     'status': 'required|in:ALERTA,PERIGO,FINALIZADO'      
+
+### List Emergencies Of Attention
+
+    url: http://104.131.99.239:5050/api/emergency/listEmergenciesAttention
+    method: GET
+    header: 
+        Authorization:Bearer {{token}}

@@ -82,4 +82,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Attachment::class);
     }
+
+    public function emergencies(){
+        return $this->hasMany(Emergency::class);
+    }
 }

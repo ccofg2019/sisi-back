@@ -51,9 +51,8 @@ Route::resource('/irregularity-reports',    'IrregularityReportsController');
 Route::resource('/irregularity-types',      'IrregularityTypesController');
 
 // Emergencies
+Route::get('/emergency/listEmergenciesAttention', 'EmergencyController@listEmergenciesAttention');
 Route::post('/emergency/insertNewPosition', 'EmergencyController@insertNewPosition');
 Route::post('/emergency/changeStatus', 'EmergencyController@changeStatus');
 Route::resource('/emergency', 'EmergencyController');
-
-
 });

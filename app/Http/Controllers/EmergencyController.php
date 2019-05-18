@@ -81,4 +81,9 @@ class EmergencyController extends Controller
         return \response()->json('', 200);
      }
 
+     public function listEmergenciesAttention(){
+        $data = $this->service->listEmergenciesAttention();
+        return \response()->json($data, 200);
+     }
+
 }

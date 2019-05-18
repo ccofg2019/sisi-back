@@ -72,4 +72,9 @@ class EmergencyService extends AppService
     public function changeStatus(Emergency $data){
         $this->repository->changeStatus($data);
     }
+
+    public function listEmergenciesAttention(){
+        $data = $this->repository->listEmergenciesAttention();
+        return $data;
+    }
 }

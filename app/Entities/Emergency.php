@@ -26,6 +26,11 @@ class Emergency extends Model implements Transformable
         'status'
     ];
 
+    protected $hidden = [
+        'user_id', 
+        'agent_id',
+    ];
+
     protected $table = 'emergencies';
 
     public $timestamp = true;
@@ -35,10 +40,10 @@ class Emergency extends Model implements Transformable
     }
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function agent(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'agent_id');
     }
 }

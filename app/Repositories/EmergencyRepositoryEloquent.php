@@ -26,8 +26,6 @@ class EmergencyRepositoryEloquent extends BaseRepository implements EmergencyRep
         return Emergency::class;
     }
 
-    
-
     /**
      * Boot up the repository, pushing criteria
      */
@@ -50,5 +48,14 @@ class EmergencyRepositoryEloquent extends BaseRepository implements EmergencyRep
     public function takeEmergency($id){
         $model =  $this->with('positionEmergencies')->findWhere(['id' => $id]);
         return $model;
+    }
+
+    public function listEmergenciesAttention(){
+        $data =  $this->with([
+            'positionEmergencies', 'user', 'agent'
+        ])->findWhereNotIn('status', [
+            'FINALIZADO'
+        ]);
+        return $data;
     }
 }
