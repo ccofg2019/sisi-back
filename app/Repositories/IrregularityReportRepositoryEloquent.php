@@ -169,4 +169,12 @@ class IrregularityReportRepositoryEloquent extends BaseRepository implements Irr
             [DB::raw('MONTH(created_at)'), '=', $month]            
         ]); 
     }
+    public function listAllirregularityOFAIntervalDate($idTypeirregularity, $date_start, $date_end){
+        $query = $this->findWhere([
+            ['irregularity_type_id', '=',  $idTypeirregularity],
+            [DB::raw('date(created_at)'),    '>=', $date_start],
+            [DB::raw('date(created_at)'),    '<=', $date_end]
+        ]);
+        return $query;
+    }
 }

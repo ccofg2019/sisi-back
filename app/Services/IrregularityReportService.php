@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Repositories\IrregularityReportRepository;
 use App\Services\Traits\CrudMethods;
+use App\Repositories\IrregularityTypesRepository;
+
 
 /**
  * Class UserService
@@ -24,13 +26,13 @@ class IrregularityReportService extends AppService
     protected $irregularityTypesService;
 
     /**
-     * OccurrenceReportService constructor.
+     * IrregularityReportService constructor.
      *
      * @param IrregularityReportRepository $repository
      * @param IrregularityTypesService $irregularityTypesService
      */
     public function __construct(IrregularityReportRepository $repository,
-                                IrregularityTypesService $irregularityTypesService)
+    IrregularityTypesService $irregularityTypesService)
     {
         $this->repository               = $repository;
         $this->irregularityTypesService = $irregularityTypesService;
@@ -73,4 +75,31 @@ class IrregularityReportService extends AppService
        $idIrregularityType = $data['idIrregularityType'];   
        return $this->repository->getAllOfTheYear($year, $month, $idIrregularityType);
    }
+
+   public function countIrregularityOfEachType($date_start, $date_end){
+    $dataIrregularityType = $this->irregularityTypesService->all();
+    $data = array();
+    $lengthDataIrregularityType = \sizeof($dataIrregularityType['data']);
+    
+    for($i = 0; $i < $lengthDataIrregularityType; $i++){
+        $irregularityType = $dataIrregularityType['data'][$i];
+        $idIrregularityType = $irregularityType['id'];
+        $nameIrregularityType = $irregularityType['name'];
+        
+        $dataListIrregularity = $this->repository->listAllIrregularityOFAIntervalDate($idIrregularityType, $date_start, $date_end);
+        
+        $lengthDataListIrregularity = \sizeof($dataListIrregularity['data']);
+
+        $dataBuild = array(
+            'IrregularityType' => array(
+                'idTypeIrregularity'                  => $idIrregularityType,
+                'nameTypeIrregularity'                => $nameIrregularityType,
+                'numberOfIrregularitys' => $lengthDataListIrregularity
+            )
+        );
+
+        \array_push($data, $dataBuild['IrregularityType']);
+    }
+    return $data;
+}
 }

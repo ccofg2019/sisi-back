@@ -7,7 +7,7 @@ use App\Services\UserService;
 use App\Validators\IrregularityReportValidator;
 use App\Services\IrregularityReportService;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\ListAllIrregularityOFAIntervalRequest;
 /**
  * Class IrregularityReportsController.
  *
@@ -74,5 +74,13 @@ class IrregularityReportsController extends Controller
         $query = $this->service->getAllOfTheYear($data);
 
         return \response()->json($query, 200);
+    }
+
+    public function countIrregularityOfEachType(ListAllIrregularityOFAIntervalRequest $request){
+        $date_start = $request->get('date_start');
+        $date_end = $request->get('date_end');
+        //$data = $this->service->countIrregularityOfEachType($date_start, $date_end);
+        $data = $this->service->countIrregularityOfEachType($date_start, $date_end);
+        return \response()->json($data, 200);
     }
 }
