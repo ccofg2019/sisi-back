@@ -60,8 +60,9 @@ class EmergencyService extends AppService
 
         $position = $this->insertPosition($positionEmergency);
         
-        $newData = $this->repository->takeEmergency($emergency_id);
-        \printf($newData);
+        $emergencyCreated = $this->repository->takeEmergency($emergency_id);
+        $newData = array('data' => $emergencyCreated);
+
         return $newData;
     }
 

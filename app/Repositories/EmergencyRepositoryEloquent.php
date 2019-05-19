@@ -41,13 +41,14 @@ class EmergencyRepositoryEloquent extends BaseRepository implements EmergencyRep
     public function changeStatus(AppEmergency $data){
         $id = $data->id;
         $status = $data->status;
-
         $this->update(['status' => $status], $id);
     }
 
     public function takeEmergency($id){
-        $model =  $this->with('positionEmergencies')->findWhere(['id' => $id]);
-        return $model;
+        $model =  $this->with([
+            'positionEmergencies', 'user', 'agent'
+        ])->findWhere(['id' => $id]);
+        return $model[0];
     }
 
     public function listEmergenciesAttention(){

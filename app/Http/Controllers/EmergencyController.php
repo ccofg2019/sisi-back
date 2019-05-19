@@ -55,7 +55,7 @@ class EmergencyController extends Controller
                       ));
 
         $data2 = $this->service->insert($data);
-        return \response()->json($data, 201);        
+        return \response()->json($data2, 201);        
      }
 
      public function insertNewPosition(InsertNewPositionEmergencyRequest $request){
