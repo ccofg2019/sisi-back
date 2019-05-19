@@ -76,4 +76,9 @@ class UsersController extends Controller
         app()->request->merge(['role_id' => User::COMMON_USER]);
         return $this->processStore($request);
     }
+
+    public function myInformations(){
+        $data = $user = UserService::getUser(true);
+        return response()->json($data, 200);
+    }
 }

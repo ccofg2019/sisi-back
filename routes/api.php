@@ -28,6 +28,7 @@ Route::middleware('auth:api')->group(function() {
     de requisições http */
 
 // Users
+Route::get('/user/myInformations',           'UsersController@myInformations');
 Route::get('/user/authenticated',           'UsersController@authenticated');
 Route::resource('/users',                   'UsersController');
 Route::resource('/roles',                   'RolesController');
