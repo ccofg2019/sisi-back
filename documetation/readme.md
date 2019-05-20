@@ -90,6 +90,13 @@
     'password'   => 'max:32|string',   
     'status'     => 'in:ATIVO,BLOQUEADO,INATIVO'
 
+### My Informations
+    url: http://104.131.99.239:5050/api/user/myInformations
+        method: GET
+        header: 
+            Accept:application/json
+            Authorization:Bearer {{token}}
+
 ## IrregularityReport
 
 ### Create IrregularityReport
