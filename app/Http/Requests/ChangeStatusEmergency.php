@@ -26,7 +26,7 @@ class ChangeStatusEmergency extends FormRequest
         return [
             //
             'emergency_id' => 'required|integer',
-            'status'       => 'required|in:ALERTA,PERIGO,FINALIZADO' 
+            'status'       => 'required|in:ALERTA,PERIGO,FINALIZADO,ATENDENDO' 
         ];
     }
     
@@ -35,7 +35,7 @@ class ChangeStatusEmergency extends FormRequest
         return [
             'required' => 'O campo :attribute é de preenchimento obrigatório!',
             'integer'  => 'O campo :attribute precisa ser do tipo inteiro!',
-            'in'   => 'O campo :attribute só pode aceitar os valores: ALERTA, PERIGO e FINALIZADO'
+            'in'   => 'O campo :attribute só pode aceitar os valores: ALERTA, PERIGO, FINALIZADO e ATENDENDO'
         ];
     }
 }

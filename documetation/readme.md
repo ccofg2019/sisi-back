@@ -314,7 +314,7 @@
 ### Validações:
 
     'emergency_id': 'required|integer',
-    'status': 'required|in:ALERTA,PERIGO,FINALIZADO'      
+    'status': 'required|in:ALERTA,PERIGO,FINALIZADO,ATENDENDO'      
 
 ### List Emergencies Of Attention
 
