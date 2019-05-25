@@ -93,7 +93,10 @@ class IrregularityTypesRepositoryEloquent extends BaseRepository implements Irre
         return $model->forceDelete();
     }
 
-
-
-
+    public function findId($irregularity_id){
+        $query = $this->findWhere([
+            ['id', '=', $irregularity_id]
+        ]);
+        $query;
+    }
 }

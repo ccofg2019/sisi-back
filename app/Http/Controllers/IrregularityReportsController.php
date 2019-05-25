@@ -8,6 +8,8 @@ use App\Validators\IrregularityReportValidator;
 use App\Services\IrregularityReportService;
 use Illuminate\Http\Request;
 use App\Http\Requests\ListAllIrregularityOFAIntervalRequest;
+use App\Http\Requests\CountOneIrregularityOfAIntervalRequest;
+
 /**
  * Class IrregularityReportsController.
  *
@@ -82,5 +84,13 @@ class IrregularityReportsController extends Controller
         //$data = $this->service->countIrregularityOfEachType($date_start, $date_end);
         $data = $this->service->countIrregularityOfEachType($date_start, $date_end);
         return \response()->json($data, 200);
+    }
+
+    public function countIrregularityTypeOfOneType(CountOneIrregularityOfAIntervalRequest $request){
+        $irregularity_id = $request->get('irregularity_id');    
+        $date_start = $request->get('date_start');
+        $date_end = $request->get('date_end');
+        $data = $this->service->countIrregularityTypeOfOneType($irregularity_id, $date_start, $date_end);
+        return response()->json($data, 200);
     }
 }

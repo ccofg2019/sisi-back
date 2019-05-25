@@ -102,4 +102,20 @@ class IrregularityReportService extends AppService
     }
     return $data;
 }
+
+    public function countIrregularityTypeOfOneType($irregularity_id, $date_start, $date_end){
+        $dataIrregularityType = $this->irregularityTypesService->findWhere([
+            ['id', '=', $irregularity_id]
+        ]);
+        $dataListIrregularity = $this->repository->listAllirregularityOFAIntervalDate($dataIrregularityType[0]->id, $date_start, $date_end);
+        $lengthDataListIrregularity = \sizeof($dataListIrregularity['data']);
+
+        $dataBuild = array(
+            'idTypeIrregularity'    => $irregularity_id,
+            'nameTypeIrregularity'  => $dataIrregularityType[0]->name,
+            'numberOfIrregularitys' => $lengthDataListIrregularity
+        );
+        
+        return $dataBuild;
+    }
 }

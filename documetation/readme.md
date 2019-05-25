@@ -156,15 +156,20 @@
 
 #### Validações:
 
-    'date_start': 'date',
-    'date_end': 'date',
-
-#### Validações:
-
     'date_start' => 'required|date_format:Y-m-d',
     'date_end'   => 'required|date_format:Y-m-d'
 
-    
+### Count Irregularity Type Of One Type
+    url: http://104.131.99.239:5050/api/irregularity-reports/countIrregularityTypeOfOneType?{irregularity_id}&{date_start}&{date_end}
+    method: GET
+    header: 
+        Authorization:Bearer {{token}}
+
+#### Validações:
+
+    'irregularity_id'   => 'required|numeric',
+    'date_start'        => 'required|date_format:Y-m-d',
+    'date_end'          => 'required|date_format:Y-m-d'    
 
 ## IrregularityType
 
