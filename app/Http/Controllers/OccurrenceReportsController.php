@@ -9,6 +9,7 @@ use App\Validators\OccurrenceReportValidator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\ListAllOccurrenceOFAIntervalRequest;
+use App\Http\Requests\CountOneOccurrenceOfAIntervalRequest;
 
 /**
  * Class OccurrenceReportsController.
@@ -87,5 +88,13 @@ class OccurrenceReportsController extends Controller
         $date_end = $request->get('date_end');
         $data = $this->service->countOccurrenceOfEachType($date_start, $date_end);
         return \response()->json($data, 200);
+    }
+
+    public function countOccurrenceOfOneType(CountOneOccurrenceOfAIntervalRequest $request){
+        $occurrence_id = $request->get('occurrence_id');    
+        $date_start = $request->get('date_start');
+        $date_end = $request->get('date_end');
+        $data = $this->service->countOccurrenceOfOneType($occurrence_id, $date_start, $date_end);
+        return response()->json($data, 200);
     }
 }

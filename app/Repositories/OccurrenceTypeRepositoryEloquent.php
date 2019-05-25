@@ -90,5 +90,12 @@ class OccurrenceTypeRepositoryEloquent extends BaseRepository implements Occurre
 
         return $model->forceDelete();
     }
+
+    public function findId($occurrence_id){
+        $query = $this->findWhere([
+            ['id', '=', $occurrence_id]
+        ]);
+        $query;
+    }
     
 }

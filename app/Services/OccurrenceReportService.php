@@ -8,6 +8,7 @@ use App\Repositories\OccurrenceReportRepository;
 use App\Services\Traits\CrudMethods;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\OccurrenceTypeRepository;
+use App\Services\OccurrenceTypeService;
 
 /**
  * Class UserService
@@ -33,6 +34,8 @@ class OccurrenceReportService extends AppService
 
     protected $occurenceTypeRepository;
 
+    protected $occurrenceTypeService;
+
     /**
      * OccurrenceReportService constructor.
      *
@@ -43,12 +46,15 @@ class OccurrenceReportService extends AppService
     public function __construct(OccurrenceReportRepository $repository,
                                 InvolvedPeopleService $involvedPeopleService,
                                 OccurrenceObjectService $occurrenceObjectService,
-                                OccurrenceTypeRepository $occurenceTypeRepository)
+                                OccurrenceTypeRepository $occurenceTypeRepository,
+                                OccurrenceTypeService $occurrenceTypeService
+                                )
     {
         $this->repository              = $repository;
         $this->involvedPeopleService   = $involvedPeopleService;
         $this->occurrenceObjectService = $occurrenceObjectService;
         $this->occurenceTypeRepository = $occurenceTypeRepository;
+        $this->occurrenceTypeService = $occurrenceTypeService;
     }
 
     /**
@@ -164,5 +170,21 @@ class OccurrenceReportService extends AppService
             \array_push($data, $dataBuild['OccurrenceType']);
         }
         return $data;
+    }
+
+    public function countOccurrenceOfOneType($occurrence_id, $date_start, $date_end){
+        $dataOccurrenceType = $this->occurrenceTypeService->findWhere([
+            ['id', '=', $occurrence_id]
+        ]);
+        $dataListOccurrence = $this->repository->listAlloccurrenceOFAIntervalDate($dataOccurrenceType[0]->id, $date_start, $date_end);
+        $lengthDataListOccurrence = \sizeof($dataListOccurrence['data']);
+
+        $dataBuild = array(
+            'idTypeOccurrence'    => $occurrence_id,
+            'nameTypeOccurrence'  => $dataOccurrenceType[0]->name,
+            'numberOfOccurrences' => $lengthDataListOccurrence
+        );
+        
+        return $dataBuild;
     }
 }

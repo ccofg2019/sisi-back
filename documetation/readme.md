@@ -159,7 +159,7 @@
     'date_start' => 'required|date_format:Y-m-d',
     'date_end'   => 'required|date_format:Y-m-d'
 
-### Count Irregularity Type Of One Type
+### Count Irregularity Of One Type
     url: http://104.131.99.239:5050/api/irregularity-reports/countIrregularityOfOneType?{irregularity_id}&{date_start}&{date_end}
     method: GET
     header: 
@@ -256,6 +256,19 @@
 
     'date_start' => 'required|date_format:Y-m-d',
     'date_end'   => 'required|date_format:Y-m-d'
+
+
+### Count Occurrence Of One Type
+    url: http://104.131.99.239:5050/api/occurrence-reports/countOccurrenceOfOneType?{occurrence_id}&{date_start}&{date_end}
+    method: GET
+    header: 
+        Authorization:Bearer {{token}}
+
+#### Validações:
+
+    'occurrence_id'   => 'required|numeric',
+    'date_start'        => 'required|date_format:Y-m-d',
+    'date_end'          => 'required|date_format:Y-m-d'    
 
 ## OccurrenceType
 
