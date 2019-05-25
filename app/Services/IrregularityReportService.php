@@ -103,7 +103,7 @@ class IrregularityReportService extends AppService
     return $data;
 }
 
-    public function countIrregularityTypeOfOneType($irregularity_id, $date_start, $date_end){
+    public function countIrregularityOfOneType($irregularity_id, $date_start, $date_end){
         $dataIrregularityType = $this->irregularityTypesService->findWhere([
             ['id', '=', $irregularity_id]
         ]);

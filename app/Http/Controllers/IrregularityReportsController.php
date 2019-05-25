@@ -86,11 +86,11 @@ class IrregularityReportsController extends Controller
         return \response()->json($data, 200);
     }
 
-    public function countIrregularityTypeOfOneType(CountOneIrregularityOfAIntervalRequest $request){
+    public function countIrregularityOfOneType(CountOneIrregularityOfAIntervalRequest $request){
         $irregularity_id = $request->get('irregularity_id');    
         $date_start = $request->get('date_start');
         $date_end = $request->get('date_end');
-        $data = $this->service->countIrregularityTypeOfOneType($irregularity_id, $date_start, $date_end);
+        $data = $this->service->countIrregularityOfOneType($irregularity_id, $date_start, $date_end);
         return response()->json($data, 200);
     }
 }
