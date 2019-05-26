@@ -46,6 +46,7 @@ Route::resource('/zones',                   'ZoneController');
 
 // Irregularities
 //A api method /irregularity-reports possui o metodo de requição da api para fazer as DMLs na base de dados.
+Route::get('/irregularity-reports/countAllIrregularityOfMonthOfTheYear',  'IrregularityReportsController@countAllIrregularityOfMonthOfTheYear');
 Route::get('/irregularity-reports/countIrregularityOfOneType',  'IrregularityReportsController@countIrregularityOfOneType');
 Route::get('/irregularity-reports/countIrregularityOfEachType',  'IrregularityReportsController@countIrregularityOfEachType');
 Route::get('/irregularity-reports/getAllOfTheYear',  'IrregularityReportsController@getAllOfTheYear');

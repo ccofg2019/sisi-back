@@ -118,4 +118,29 @@ class IrregularityReportService extends AppService
         
         return $dataBuild;
     }
+
+    public function countAllIrregularityOfMonthOfTheYear($month, $year){
+        
+        $dataIrregularityType = $this->irregularityTypesService->all();
+        $data = array();
+        $lengthDataIrregularityType = \sizeof($dataIrregularityType['data']);
+        for($i = 0; $i < $lengthDataIrregularityType; $i++){
+            $irregularityType = $dataIrregularityType['data'][$i];
+            $idIrregularityType = $irregularityType['id'];
+            $nameIrregularityType = $irregularityType['name'];
+            $dataListIrregularity = $this->repository->ListIrregularityWithYearMonth($year, $month, $idIrregularityType);
+            $lengthDataListIrregularity = \sizeof($dataListIrregularity['data']);
+    
+            $dataBuild = array(
+                'IrregularityType' => array(
+                    'idTypeIrregularity'                  => $idIrregularityType,
+                    'nameTypeIrregularity'                => $nameIrregularityType,
+                    'numberOfIrregularitys' => $lengthDataListIrregularity
+                )
+            );
+    
+            \array_push($data, $dataBuild['IrregularityType']);
+        }
+        return $data;
+    }
 }

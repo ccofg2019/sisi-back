@@ -9,6 +9,7 @@ use App\Services\IrregularityReportService;
 use Illuminate\Http\Request;
 use App\Http\Requests\ListAllIrregularityOFAIntervalRequest;
 use App\Http\Requests\CountOneIrregularityOfAIntervalRequest;
+use App\Http\Requests\CountOneIrregularityOfMonthOfTheYearRequest;
 
 /**
  * Class IrregularityReportsController.
@@ -91,6 +92,13 @@ class IrregularityReportsController extends Controller
         $date_start = $request->get('date_start');
         $date_end = $request->get('date_end');
         $data = $this->service->countIrregularityOfOneType($irregularity_id, $date_start, $date_end);
+        return response()->json($data, 200);
+    }
+
+    public function countAllIrregularityOfMonthOfTheYear(CountOneIrregularityOfMonthOfTheYearRequest $request){
+        $month = $request->get('month');
+        $year = $request->get('year');
+        $data = $this->service->countAllIrregularityOfMonthOfTheYear($month, $year);
         return response()->json($data, 200);
     }
 }
