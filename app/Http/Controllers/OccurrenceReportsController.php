@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\ListAllOccurrenceOFAIntervalRequest;
 use App\Http\Requests\CountOneOccurrenceOfAIntervalRequest;
-
+use App\Http\Requests\CountOneOccurrenceOfMonthOfTheYearRequest;
 /**
  * Class OccurrenceReportsController.
  *
@@ -95,6 +95,13 @@ class OccurrenceReportsController extends Controller
         $date_start = $request->get('date_start');
         $date_end = $request->get('date_end');
         $data = $this->service->countOccurrenceOfOneType($occurrence_id, $date_start, $date_end);
+        return response()->json($data, 200);
+    }
+
+    public function countAllOccurrenceOfMonthOfTheYear(CountOneOccurrenceOfMonthOfTheYearRequest $request){
+        $month = $request->get('month');
+        $year = $request->get('year');
+        $data = $this->service->countAllOccurrenceOfMonthOfTheYear($month, $year);
         return response()->json($data, 200);
     }
 }

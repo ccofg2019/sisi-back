@@ -155,7 +155,7 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
         return $data;        
     }
 
-    private function ListOccurrenceWithYearMonth($year, $month, $idOccurrenceType){
+    public function ListOccurrenceWithYearMonth($year, $month, $idOccurrenceType){
         if($idOccurrenceType != 0){
             return $this->findWhere([
                 [DB::raw('YEAR(occurrence_date)'), '=', $year],

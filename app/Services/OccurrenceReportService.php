@@ -187,4 +187,29 @@ class OccurrenceReportService extends AppService
         
         return $dataBuild;
     }
+
+    public function countAllOccurrenceOfMonthOfTheYear($month, $year){
+        
+        $dataOccurrenceType = $this->occurrenceTypeService->all();
+        $data = array();
+        $lengthDataOccurrenceType = \sizeof($dataOccurrenceType['data']);
+        for($i = 0; $i < $lengthDataOccurrenceType; $i++){
+            $occurrenceType = $dataOccurrenceType['data'][$i];
+            $idOccurrenceType = $occurrenceType['id'];
+            $nameOccurrenceType = $occurrenceType['name'];
+            $dataListOccurrence = $this->repository->ListOccurrenceWithYearMonth($year, $month, $idOccurrenceType);
+            $lengthDataListOccurrence = \sizeof($dataListOccurrence['data']);
+    
+            $dataBuild = array(
+                'OccurrenceType' => array(
+                    'idTypeOccurrence'                  => $idOccurrenceType,
+                    'nameTypeOccurrence'                => $nameOccurrenceType,
+                    'numberOfOccurrences' => $lengthDataListOccurrence
+                )
+            );
+    
+            \array_push($data, $dataBuild['OccurrenceType']);
+        }
+        return $data;
+    }
 }

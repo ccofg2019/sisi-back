@@ -280,7 +280,19 @@
 
     'occurrence_id'   => 'required|numeric',
     'date_start'        => 'required|date_format:Y-m-d',
-    'date_end'          => 'required|date_format:Y-m-d'    
+    'date_end'          => 'required|date_format:Y-m-d' 
+    
+### Count All Occurrence Of Month Of The Year
+
+    url: http://104.131.99.239:5050/api/occurrence-reports/countAllOccurrenceOfMonthOfTheYear?{year}&{month}
+    method: GET
+    header: 
+        Authorization:Bearer {{token}}
+
+#### Validações:
+
+    'year'      => 'required|numeric'    
+    'month'     => 'required|numeric',   
 
 ## OccurrenceType
 
