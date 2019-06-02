@@ -19,7 +19,9 @@ class Zone extends AppModel
     protected $fillable = [
         'name',
         'description',
-        'campus'
+        'campus',
+        'latitude',
+        'longitude'
     ];
 
     /**
