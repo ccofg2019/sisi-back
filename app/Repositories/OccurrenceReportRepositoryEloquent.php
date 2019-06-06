@@ -9,6 +9,8 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Entities\OccurrenceReport;
 use App\Validators\OccurrenceReportValidator;
+use App\OccurrenceReports as AppOccurrenceReports;
+
 
 /**
  * Class OccurrenceReportRepositoryEloquent.
@@ -184,5 +186,11 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
             [DB::raw('date(occurrence_date)'),    '<=', $date_end]
         ]);
         return $query;
+    }
+
+    public function changeStatus($data){
+        $id = $data->id;
+        $status = $data->status;
+        $this->update(['status' => $status], $id);
     }
 }
