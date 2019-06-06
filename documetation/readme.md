@@ -368,7 +368,7 @@
 ## Emergency
 
 ### Request Password Recovery
-url: http://104.131.99.239:5050/api/passwordRecovery
+    url: http://104.131.99.239:5050/api/passwordRecovery
     method: POST
     header:        
         Accept:application/json
@@ -381,12 +381,12 @@ url: http://104.131.99.239:5050/api/passwordRecovery
     }
 #### Validações:
 
-        "email"     => "required",
-	    "cpf"       => "required",
-	    "birthdate" => "required|date_format:Y-m-d"
+    "email"     => "required",
+	"cpf"       => "required",
+	"birthdate" => "required|date_format:Y-m-d"
 
 ### Change Password
-url: http://104.131.99.239:5050/api/passwordRecovery/ChangePassword
+    url: http://104.131.99.239:5050/api/passwordRecovery/ChangePassword
     method: POST
     header:        
         Accept:application/json
@@ -394,9 +394,9 @@ url: http://104.131.99.239:5050/api/passwordRecovery/ChangePassword
     body:
     {
         "key":         "string",
-	    "newPassword": "string"        
+        "newPassword": "string"        
     }
 #### Validações:
 
-        "key"         => "required|max:250",
-	    "newPassword" => "required|max:255"
+    "key"         => "required|max:250",
+    "newPassword" => "required|max:255"
