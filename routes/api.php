@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/users/image/{filename}',                 'AttachmentsController@showProfileImage');
 
+//RecoveryPassword
+Route::resource('/passwordRecovery', 'PasswordRecoveryController');
+Route::post('/passwordRecovery/ChangePassword', 'PasswordRecoveryController@ChangePassword');
+
 /** ROTAS ABERTAS */
 // Mobile
 Route::prefix('mobile')->group(function () {
