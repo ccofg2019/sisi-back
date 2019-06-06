@@ -7,12 +7,12 @@
         Accept:application/json
     body:
     {
-        "grant_type": "password",   
-        "client_id": 2,   
+        "grant_type":    "password",   
+        "client_id":      2,   
         "client_secret": "g422Ugg1VaW9UcXaqrUKe6hJNb7tETtViB9AtY4X",   
-        "username": user_email,   
-        "password": user_password,   
-        "scope": "*"
+        "username":       user_email,   
+        "password":       user_password,   
+        "scope":          "*"
     }
 
 ## User
@@ -25,16 +25,16 @@
         Authorization:Bearer {{token}}
     body:
     {
-        "name": *"string",
-        "cpf": *"string",
-        "birthdate": *"Y-m-d",
-        "gender": *"string",
-        "skin_color": *"string",
-        "cellphone": *"string",
-        "phone": "string",
-        "status": *"string",
-        "email": *"string",
-        "password": *"string"
+        "name":       "string",
+        "cpf":        "string",
+        "birthdate":  "Y-m-d",
+        "gender":     "string",
+        "skin_color": "string",
+        "cellphone":  "string",
+        "phone":      "string",
+        "status":     "string",
+        "email":      "string",
+        "password":   "string"
     }
         
 #### Validações:   
@@ -64,17 +64,17 @@
         Authorization:Bearer {{token}}
     body:
     {
-        "id": "integer"
-        "name": *"string",
-        "cpf": *"string",
-        "birthdate": *"Y-m-d",
-        "gender": *"string",
-        "skin_color": *"string",
-        "cellphone": *"string",
-        "phone": "string",
-        "status": *"string",
-        "email": *"string",
-        "password": *"string"
+        "id":         "integer"
+        "name":       "string",
+        "cpf":        "string",
+        "birthdate":  "Y-m-d",
+        "gender":     "string",
+        "skin_color": "string",
+        "cellphone":  "string",
+        "phone":      "string",
+        "status":     "string",
+        "email":      "string",
+        "password":   "string"
     }
         
 #### Validações:   
@@ -108,13 +108,13 @@
         Authorization:Bearer {{token}}
     body:
     {
-        "title": "string",
-        "story": "string",
-        "coordinates": "latitude,longitude",
+        "title":                "string",
+        "story":                "string",
+        "coordinates":          "latitude,longitude",
         "irregularity_type_id": "integer",
-        "agent_id": "integer",
-        "zone_id": "integer",
-        "status": "string"
+        "agent_id":             "integer",
+        "zone_id":              "integer",
+        "status":               "string"
     }
 
 #### Validações:
@@ -143,8 +143,8 @@
 
 #### Validações:
 
-    'year': 'integer',
-    'month': 'integer',
+    'year':               'integer',
+    'month':              'integer',
     'idIrregularityType': 'integer'
 
 ### Count All Irregularity Of a Interval Date Of Each Type
@@ -167,9 +167,9 @@
 
 #### Validações:
 
-    'irregularity_id'   => 'required|numeric',
-    'date_start'        => 'required|date_format:Y-m-d',
-    'date_end'          => 'required|date_format:Y-m-d'  
+    'irregularity_id' => 'required|numeric',
+    'date_start'      => 'required|date_format:Y-m-d',
+    'date_end'        => 'required|date_format:Y-m-d'  
 
 ### Count All Irregularity Of Month Of The Year
 
@@ -180,8 +180,8 @@
 
 #### Validações:
 
-    'year'      => 'required|numeric'    
-    'month'     => 'required|numeric',
+    'year'  => 'required|numeric'    
+    'month' => 'required|numeric',
 
 ## IrregularityType
 
@@ -203,27 +203,27 @@
         Authorization:Bearer {{token}}
     body:
     {
-        "title": "string",
-        "story": "string",
-        "occurrence_date": "date",
-        "occurrence_time": "time"
-        "coordinates": "latitude,longitude",
+        "title":              "string",
+        "story":              "string",
+        "occurrence_date":    "date",
+        "occurrence_time":    "time"
+        "coordinates":        "latitude,longitude",
         "occurrence_type_id": "integer",
-        "agent_id": "integer",
-        "zone_id": "integer",
-        "status": "string"
+        "agent_id":           "integer",
+        "zone_id":            "integer",
+        "status":             "string"
     }
 #### Validações:
 
-    'title'                 => 'required',
-    'story'                 => 'required',
-    'occurrence_date'       => 'required|date',
-	'occurrence_time'       => 'required|time',
-    'coordinates'           => 'required',
-    'occurrence_type_id'    => 'required|integer',
-    'agent_id'              => 'integer',
-    'zone_id'               => 'required|integer',
-    'status'                => 'in:NOVO,EM INVESTIGACAO,CONCLUIDO,ARQUIVADA'
+    'title'              => 'required',
+    'story'              => 'required',
+    'occurrence_date'    => 'required|date',
+	'occurrence_time'    => 'required|time',
+    'coordinates'        => 'required',
+    'occurrence_type_id' => 'required|integer',
+    'agent_id'           => 'integer',
+    'zone_id'            => 'required|integer',
+    'status'             => 'in:NOVO,EM INVESTIGACAO,CONCLUIDO,ARQUIVADA'
 
 ### MyList OccurrenceReport
 
@@ -241,9 +241,9 @@
         Authorization:Bearer {{token}}
 #### Validações:
 
-    'year': 'integer',
-    'month': 'integer',
-    'idOccurrenceType': 'integer'
+    'year'             => 'integer',
+    'month'            => 'integer',
+    'idOccurrenceType' => 'integer'
 
 ### List All OccurrenceReport Of a Year Ago
 
@@ -261,8 +261,8 @@
 
 #### Validações:
 
-    'date_start': 'date',
-    'date_end': 'date',
+    'date_start' => 'date',
+    'date_end'   => 'date',
 
 #### Validações:
 
@@ -295,9 +295,9 @@
 
 #### Validações:
 
-    'occurrence_id'   => 'required|numeric',
-    'date_start'        => 'required|date_format:Y-m-d',
-    'date_end'          => 'required|date_format:Y-m-d' 
+    'occurrence_id' => 'required|numeric',
+    'date_start'    => 'required|date_format:Y-m-d',
+    'date_end'      => 'required|date_format:Y-m-d' 
     
 ### Count All Occurrence Of Month Of The Year
 
@@ -308,8 +308,8 @@
 
 #### Validações:
 
-    'year'      => 'required|numeric'    
-    'month'     => 'required|numeric',   
+    'year'  => 'required|numeric'    
+    'month' => 'required|numeric',   
 
 ## OccurrenceType
 
@@ -331,13 +331,13 @@
         Authorization:Bearer {{token}}
     body:
     {
-        'latitude': 'numeric',
+        'latitude':  'numeric',
         'longitude': 'numeric'
     }
-### Validações:
+#### Validações:
 
-    'latitude':  'required|numeric|between:-99.99999999, 99.99999999',
-    'longitude': 'required|numeric|between:-999.99999999, 999.99999999'
+    'latitude'  => 'required|numeric|between:-99.99999999, 99.99999999',
+    'longitude' => 'required|numeric|between:-999.99999999, 999.99999999'
 
 ### Create a New Position for an Existing Emergency
 
@@ -349,10 +349,10 @@
     body:
     {
         'emergency_id': 'integer'
-        'latitude': 'numeric',
-        'longitude': 'numeric'
+        'latitude':     'numeric',
+        'longitude':    'numeric'
     }
-### Validações:
+#### Validações:
 
     'emergency_id' => 'required|integer', 
     'latitude'     => 'required|numeric|between:-99.99999999, 99.99999999',
@@ -368,12 +368,12 @@
     body:
     {
         'emergency_id': 'integer',
-        'status': 'string'      
+        'status':       'string'      
     }
-### Validações:
+#### Validações:
 
-    'emergency_id': 'required|integer',
-    'status': 'required|in:ALERTA,PERIGO,FINALIZADO,ATENDENDO'      
+    'emergency_id' => 'required|integer',
+    'status'       => 'required|in:ALERTA,PERIGO,FINALIZADO,ATENDENDO'      
 
 ### List Emergencies Of Attention
 
@@ -381,3 +381,39 @@
     method: GET
     header: 
         Authorization:Bearer {{token}}
+
+## Emergency
+
+### Request Password Recovery
+url: http://104.131.99.239:5050/api/passwordRecovery
+    method: POST
+    header:        
+        Accept:application/json
+        Authorization:Bearer {{token}}
+    body:
+    {
+        "email":     "string",
+	    "cpf":       "string",
+	    "birthdate": "date"         
+    }
+#### Validações:
+
+        "email"     => "required",
+	    "cpf"       => "required",
+	    "birthdate" => "required|date_format:Y-m-d"
+
+### Change Password
+url: http://104.131.99.239:5050/api/passwordRecovery/ChangePassword
+    method: POST
+    header:        
+        Accept:application/json
+        Authorization:Bearer {{token}}
+    body:
+    {
+        "key":         "string",
+	    "newPassword": "string"        
+    }
+#### Validações:
+
+        "key"         => "required|max:250",
+	    "newPassword" => "required|max:255"
