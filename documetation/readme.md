@@ -382,7 +382,7 @@
     header: 
         Authorization:Bearer {{token}}
 
-## Emergency
+## Password Recovery
 
 ### Request Password Recovery
     url: http://104.131.99.239:5050/api/passwordRecovery
