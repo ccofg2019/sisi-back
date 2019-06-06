@@ -34,6 +34,7 @@ Route::resource('/users',                   'UsersController');
 Route::resource('/roles',                   'RolesController');
 
 // Occurrences
+Route::post('/occurrence-reports/changeStatus', 'OccurrenceReportsController@changeStatus');
 Route::get('/occurrence-reports/countAllOccurrenceOfMonthOfTheYear',  'OccurrenceReportsController@countAllOccurrenceOfMonthOfTheYear');
 Route::get('/occurrence-reports/countOccurrenceOfOneType',  'OccurrenceReportsController@countOccurrenceOfOneType');
 Route::get('/occurrence-reports/countOccurrenceOfEachType',  'OccurrenceReportsController@countOccurrenceOfEachType');

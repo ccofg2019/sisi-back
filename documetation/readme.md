@@ -269,6 +269,23 @@
     'date_start' => 'required|date_format:Y-m-d',
     'date_end'   => 'required|date_format:Y-m-d'
 
+### Alter Status Occurrence
+
+    url: http://104.131.99.239:5050/api/occurrence-reports/changeStatus
+    method: POST
+    header:        
+        Accept:application/json
+        Authorization:Bearer {{token}}
+    body:
+    {
+        'occurrence_reports_id': 'integer',
+        'status': 'string'      
+    }
+### Validações:
+
+    'emergency_id': 'required|integer',
+    'status': 'required|in:ALERTA,PERIGO,FINALIZADO,ATENDENDO'  
+
 
 ### Count Occurrence Of One Type
     url: http://104.131.99.239:5050/api/occurrence-reports/countOccurrenceOfOneType?{occurrence_id}&{date_start}&{date_end}
