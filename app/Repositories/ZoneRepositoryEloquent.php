@@ -91,5 +91,12 @@ class ZoneRepositoryEloquent extends BaseRepository implements ZoneRepository
 
         return $model->forceDelete();
     }
+
+    public function ListZonesRecife(){
+        $query = $this->orderBy('name', 'ASC')->findWhere([
+            ['campus', '=', 'Recife']
+        ]);
+        return $query['data'];
+    }
     
 }

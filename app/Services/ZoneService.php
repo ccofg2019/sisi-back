@@ -41,14 +41,14 @@ class ZoneService extends AppService
      * @param $limit
      * @return array|mixed
      */
-    public function all($limit = 20)
-    {
-        $this->repository
-            ->resetCriteria()
-            ->pushCriteria(app('App\Criterias\AppRequestCriteria'));
+    // public function all($limit = 20)
+    // {
+    //     $this->repository
+    //         ->resetCriteria()
+    //         ->pushCriteria(app('App\Criterias\AppRequestCriteria'));
 
-        return $this->processAll($limit);
-    }
+    //     return $this->processAll($limit);
+    // }
 
     public function create($data)
     {
@@ -72,5 +72,10 @@ class ZoneService extends AppService
         AuditLogService::write('deletou zona', AuditLog::LOGGABLE_TYPE_ZONE,  $id);
 
         return $zone;
+    }
+
+    public function functionListZonesRecife(){
+        $data = $this->repository->ListZonesRecife();
+        return $data;
     }
 }

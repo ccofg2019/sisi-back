@@ -48,7 +48,7 @@ Route::get('/occurrence-reports/myList',  'OccurrenceReportsController@myList');
 Route::resource('/occurrence-reports',      'OccurrenceReportsController');//JVMN - Linha de código responsável por retornar os dados, que serão usados nos relatórios, das requisições http.
 Route::resource('/occurrence-types',        'OccurrenceTypesController');
 Route::resource('/object',                  'OccurrenceObjectsController');
-Route::resource('/zones',                   'ZoneController');
+Route::resource('/zones',                   'ZonesController');
 
 // Irregularities
 //A api method /irregularity-reports possui o metodo de requição da api para fazer as DMLs na base de dados.
