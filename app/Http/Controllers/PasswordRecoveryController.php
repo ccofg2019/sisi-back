@@ -26,6 +26,9 @@ class PasswordRecoveryController extends Controller
 
         $data = $this->service->store($email, $cpf, $birthdate);
 
+        if($data == null)
+            return response()->json(array('message' => 'As informações preenchidas não são válidas!'), 400);
+
         return response()->json($data, 200);
     }
 

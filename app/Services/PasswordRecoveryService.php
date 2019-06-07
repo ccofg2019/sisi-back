@@ -30,7 +30,10 @@ class PasswordRecoveryService extends AppService{
 
     public function store($email, $cpf, $birthdate){
         $queryUser = $this->userRepository->validInformationsEmail($email, $cpf, $birthdate);
-        $userId = $queryUser['data'][0]['id'];
+        if(empty($queryUser) || $queryUser == null){
+            return null;
+        }
+        $userId = $queryUser['id'];
         
         $hashBuild =  $email . $cpf . $birthdate;
         $hash = Hash::make($hashBuild);

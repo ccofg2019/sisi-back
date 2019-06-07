@@ -110,7 +110,10 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
             ['cpf', '=', $cpf],
             ['birthdate', '=', $birthdate]
         ]);
-        return $model;
+        if(!isset($model['data'][0]))
+            return null;
+
+        return $model['data'][0];
     }
 
     public function changePassword($id, $newPassword){
