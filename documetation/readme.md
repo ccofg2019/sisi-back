@@ -417,3 +417,13 @@
 
     "key"         => "required|max:250",
     "newPassword" => "required|max:255"
+
+## Zones
+
+### List Zones Recife
+
+    url: http://104.131.99.239:5050/api/zones
+    method: GET
+    header:        
+        Accept:application/json
+        Authorization:Bearer {{token}}
