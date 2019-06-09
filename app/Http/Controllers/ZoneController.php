@@ -37,4 +37,9 @@ class ZoneController extends Controller
         $this->service   = $service;
         $this->validator = $validator;
     }
+
+    public function listZonesRecife(){
+        $data = $this->service->listZonesRecife();
+        return response()->json($data, 200);
+    }
 }

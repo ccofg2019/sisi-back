@@ -26,7 +26,9 @@ class ZoneTransformer extends TransformerAbstract
 
             'name'                  => $model->name,
             'description'           => $model->description,
-
+            'campus'                => $model->campus,
+            'latitude'              => $model->latitude,
+            'longitude'             => $model->longitude,
             'created_at'            => $model->created_at->toDateTimeString(),
             'updated_at'            => $model->updated_at->toDateTimeString()
         ];
