@@ -20,7 +20,7 @@ class IrregularityReportsController extends Controller
 {
 
     use CrudMethods{
-        App\Http\Controllers\CrudMethods::store as protected processStore;
+        store as protected processStore;
     }
 
     /**
