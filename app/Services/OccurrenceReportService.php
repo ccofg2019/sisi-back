@@ -9,6 +9,8 @@ use App\Services\Traits\CrudMethods;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\OccurrenceTypeRepository;
 use App\Services\OccurrenceTypeService;
+use App\OccurrenceReports;
+
 
 /**
  * Class UserService
@@ -132,6 +134,10 @@ class OccurrenceReportService extends AppService
     public function myList($idUser){
         return $this->repository->myList($idUser);
 
+    }
+
+    public function changeStatus($data){
+        $this->repository->changeStatus($data);
     }
 
     public function getAllOfTheYear($data){

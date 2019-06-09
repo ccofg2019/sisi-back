@@ -73,4 +73,9 @@ class ZoneService extends AppService
 
         return $zone;
     }
+
+    public function listZonesRecife(){
+        $data = $this->repository->listZoneRecife();
+        return $data;
+    }
 }

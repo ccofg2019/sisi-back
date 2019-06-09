@@ -9,6 +9,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\UserRepository;
 use App\Entities\User;
 use App\Validators\UserValidator;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class RoleRepositoryEloquent.
@@ -102,5 +103,21 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
 
         return $model->forceDelete();
     }
-    
+
+    public function validInformationsEmail($email, $cpf, $birthdate){
+        $model = $this->findWhere([
+            ['email', '=', $email],
+            ['cpf', '=', $cpf],
+            ['birthdate', '=', $birthdate]
+        ]);
+        if(!isset($model['data'][0]))
+            return null;
+
+        return $model['data'][0];
+    }
+
+    public function changePassword($id, $newPassword){
+        $bycryptPassword = bcrypt($newPassword);
+        DB::table('users')->where('id', $id)->update(array('password' => $bycryptPassword));
+    }
 }

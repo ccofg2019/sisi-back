@@ -37,6 +37,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repositories\CoordinateRepository::class,                     \App\Repositories\CoordinateRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\EmergencyRepository::class,                      \App\Repositories\EmergencyRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\PositionEmergencyRepository::class,              \App\Repositories\PositionEmergencyRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\PasswordRecoveryRepository::class,               \App\Repositories\PasswordRecoveryRepositoryEloquent::class);
         //:end-bindings:
     }
 }

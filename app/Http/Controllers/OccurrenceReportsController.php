@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests\ListAllOccurrenceOFAIntervalRequest;
 use App\Http\Requests\CountOneOccurrenceOfAIntervalRequest;
 use App\Http\Requests\CountOneOccurrenceOfMonthOfTheYearRequest;
+use App\Http\Requests\ChangeStatusOccurrenceReports;
+use App\OccurrenceReports;
+
 /**
  * Class OccurrenceReportsController.
  *
@@ -104,4 +107,15 @@ class OccurrenceReportsController extends Controller
         $data = $this->service->countAllOccurrenceOfMonthOfTheYear($month, $year);
         return response()->json($data, 200);
     }
+
+    public function changeStatus(ChangeStatusOccurrenceReports $request){
+        $occurrence_reports_id = $request->get('occurrence_reports_id');
+        $status = $request->get('status');
+
+        $occurrence_reports = new OccurrenceReports($occurrence_reports_id, $status);
+
+        $this->service->changeStatus($occurrence_reports);
+
+        return \response()->json('', 200);
+     }
 }

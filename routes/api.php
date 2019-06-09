@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/users/image/{filename}',                 'AttachmentsController@showProfileImage');
 
+//RecoveryPassword
+Route::resource('/passwordRecovery', 'PasswordRecoveryController');
+Route::post('/passwordRecovery/ChangePassword', 'PasswordRecoveryController@ChangePassword');
+
 /** ROTAS ABERTAS */
 // Mobile
 Route::prefix('mobile')->group(function () {
@@ -34,6 +38,7 @@ Route::resource('/users',                   'UsersController');
 Route::resource('/roles',                   'RolesController');
 
 // Occurrences
+Route::post('/occurrence-reports/changeStatus', 'OccurrenceReportsController@changeStatus');
 Route::get('/occurrence-reports/countAllOccurrenceOfMonthOfTheYear',  'OccurrenceReportsController@countAllOccurrenceOfMonthOfTheYear');
 Route::get('/occurrence-reports/countOccurrenceOfOneType',  'OccurrenceReportsController@countOccurrenceOfOneType');
 Route::get('/occurrence-reports/countOccurrenceOfEachType',  'OccurrenceReportsController@countOccurrenceOfEachType');
@@ -43,7 +48,6 @@ Route::get('/occurrence-reports/myList',  'OccurrenceReportsController@myList');
 Route::resource('/occurrence-reports',      'OccurrenceReportsController');//JVMN - Linha de código responsável por retornar os dados, que serão usados nos relatórios, das requisições http.
 Route::resource('/occurrence-types',        'OccurrenceTypesController');
 Route::resource('/object',                  'OccurrenceObjectsController');
-Route::resource('/zones',                   'ZoneController');
 
 // Irregularities
 //A api method /irregularity-reports possui o metodo de requição da api para fazer as DMLs na base de dados.
@@ -60,4 +64,8 @@ Route::get('/emergency/listEmergenciesAttention', 'EmergencyController@listEmerg
 Route::post('/emergency/insertNewPosition', 'EmergencyController@insertNewPosition');
 Route::post('/emergency/changeStatus', 'EmergencyController@changeStatus');
 Route::resource('/emergency', 'EmergencyController');
+
+// Zones
+Route::get('/zones/listZonesRecife',        'ZoneController@listZonesRecife');
+Route::resource('/zones',                   'ZoneController');
 });
