@@ -34,6 +34,7 @@ class ZonesTableSeeder extends Seeder
 // Núcleo de Educação Física e Desportos - -8.0549846,-34.9485923 (OK)
 // Clube Universitário - -8.0556932,-34.9495228 (OK)
       $zones = [
+                ['name' =>  'Outros',                                           'description' => '',                                            'campus' => 'Recife', 'latitude' => null,           'longitude' => null],
                 ['name' =>  'Reitoria da UFPE',                                 'description' => '',                                            'campus' => 'Recife', 'latitude' => '-8.05234',   'longitude' => '-34.9451239'],
                 ['name' =>  'Departamento de Energia Nuclear',                  'description' => '',                                            'campus' => 'Recife', 'latitude' => '-8.0576847', 'longitude' => '-34.9553646'],
                 ['name' =>  'CCEN',                                             'description' => 'Centro de Ciências Exatas e da Natureza',     'campus' => 'Recife', 'latitude' => '-8.0564252', 'longitude' => '-34.9519059'],
