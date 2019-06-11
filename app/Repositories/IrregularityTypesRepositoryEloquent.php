@@ -99,4 +99,8 @@ class IrregularityTypesRepositoryEloquent extends BaseRepository implements Irre
         ]);
         $query;
     }
+
+    public function listAll(){
+        return $this->orderBy('name', 'DESC')->all()['data'];
+    }
 }
