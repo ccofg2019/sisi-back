@@ -100,34 +100,10 @@ class ZonesTableSeeder extends Seeder
                 ['name' =>  'Bloco Novo',                                       'description' => '',                                            'campus' => 'Caruaru', 'latitude' => '-8.225020', 'longitude' => '-35.982107'],  
                 ['name' =>  'Cafeteria Campus do Agreste',                      'description' => '',                                            'campus' => 'Caruaru', 'latitude' => '-8.224888', 'longitude' => '-35.984891'],  
                 ['name' =>  'Restaurante Universitário',                        'description' => '',                                            'campus' => 'Caruaru', 'latitude' => '-8.225105', 'longitude' => '-35.983955'], 
-                ['name' =>  'Cantina',                                          'description' => 'Campus Caruaru',                              'campus' => 'Caruaru', 'latitude' => '-8.225399', 'longitude' => '-35.982307'] 
-
-
-
-
-               
-
-
-
-
-
-
-                                                          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                ['name' =>  'Cantina',                                          'description' => 'Campus Caruaru',                              'campus' => 'Caruaru', 'latitude' => '-8.225399', 'longitude' => '-35.982307'],
+                ['name' =>  'TV Universitária',                                 'description' => '',                                            'campus' => 'Recife',  'latitude' => '-8.0496792', 'longitude' => '-34.8746878'],
+                ['name' =>  'CCJ - Centro de Ciências Jurídicas',               'description' => '',                                            'campus' => 'Recife',  'latitude' => '-8.0589123', 'longitude' => '-34.8827248'],
+                ['name' =>  'Memorial da Medicina de Pernambuco',               'description' => '',                                            'campus' => 'Recife',  'latitude' => '-8.0584382', 'longitude' => '-34.9003994']
         ];
 
 
