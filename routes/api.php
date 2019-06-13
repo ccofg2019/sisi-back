@@ -38,6 +38,7 @@ Route::resource('/users',                   'UsersController');
 Route::resource('/roles',                   'RolesController');
 
 // Occurrences
+Route::get('/occurrence-types/listAll',      'OccurrenceTypesController@listAll');
 Route::post('/occurrence-reports/changeStatus', 'OccurrenceReportsController@changeStatus');
 Route::get('/occurrence-reports/countAllOccurrenceOfMonthOfTheYear',  'OccurrenceReportsController@countAllOccurrenceOfMonthOfTheYear');
 Route::get('/occurrence-reports/countOccurrenceOfOneType',  'OccurrenceReportsController@countOccurrenceOfOneType');
@@ -51,6 +52,7 @@ Route::resource('/object',                  'OccurrenceObjectsController');
 
 // Irregularities
 //A api method /irregularity-reports possui o metodo de requição da api para fazer as DMLs na base de dados.
+Route::get('/irregularity-types/listAll',      'IrregularityTypesController@listAll');
 Route::get('/irregularity-reports/countAllIrregularityOfMonthOfTheYear',  'IrregularityReportsController@countAllIrregularityOfMonthOfTheYear');
 Route::get('/irregularity-reports/countIrregularityOfOneType',  'IrregularityReportsController@countIrregularityOfOneType');
 Route::get('/irregularity-reports/countIrregularityOfEachType',  'IrregularityReportsController@countIrregularityOfEachType');

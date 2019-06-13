@@ -39,4 +39,9 @@ class IrregularityTypesController extends Controller
         $this->validator = $validator;
     }
 
+    public function listAll(){
+        $data = $this->service->listAll();
+        return response()->json($data, 200);
+    }
+
 }

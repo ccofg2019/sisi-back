@@ -45,4 +45,9 @@ class OccurrenceTypesController extends Controller
         $this->service   = $service;
         $this->validator = $validator;
     }
+
+    public function listAll(){
+        $data = $this->service->listAll();
+        return response()->json($data, 200);
+    }
 }

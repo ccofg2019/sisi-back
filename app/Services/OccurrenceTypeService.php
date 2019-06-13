@@ -45,4 +45,8 @@ class OccurrenceTypeService extends AppService
 
         return $this->processAll($limit);
     }
+
+    public function listAll(){
+        return $this->repository->listAll();
+    }
 }

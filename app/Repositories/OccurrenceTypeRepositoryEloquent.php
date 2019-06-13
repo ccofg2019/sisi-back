@@ -98,4 +98,7 @@ class OccurrenceTypeRepositoryEloquent extends BaseRepository implements Occurre
         $query;
     }
     
+    public function listAll(){
+        return $this->orderBy('name', 'DESC')->all()['data'];
+    }
 }

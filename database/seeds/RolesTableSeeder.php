@@ -15,14 +15,13 @@ class RolesTableSeeder extends Seeder
             ['name' => 'Usuário Comum',         'department' => ''],
             ['name' => 'Inspetor',              'department' => 'DFCU'],
             ['name' => 'Diretor',               'department' => 'DFCU'],
-            ['name' => 'Segurança',             'department' => 'DENS'],
-            ['name' => 'Inspetor',              'department' => 'DENS'],
-            ['name' => 'Inspetor Geral',        'department' => 'DENS'],
-            ['name' => 'Diretor Operacional',   'department' => 'DENS'],
-            ['name' => 'Superitendente',        'department' => 'DENS'],
+            ['name' => 'Segurança',             'department' => 'DGOS'],
+            ['name' => 'Inspetor',              'department' => 'DGOS'],
+            ['name' => 'Inspetor Geral',        'department' => 'DGOS'],
+            ['name' => 'Diretor Operacional',   'department' => 'DGOS'],
+            ['name' => 'Superitendente',        'department' => 'SSI'],
             ['name' => 'Investigador',          'department' => 'DIP'],
             ['name' => 'Investigador Chefe',    'department' => 'DIP'],
-            ['name' => 'Superitendente',        'department' => 'DIP'],
         ];
 
         foreach ($roles as $role) {
