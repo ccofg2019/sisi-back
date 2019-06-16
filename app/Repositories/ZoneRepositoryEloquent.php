@@ -93,9 +93,7 @@ class ZoneRepositoryEloquent extends BaseRepository implements ZoneRepository
     }
 
     public function listZoneRecife(){
-        $query = $this->orderBy('name', 'ASC')->findWhere([
-            ['campus', '=', 'Recife']
-        ]);
+        $query = $this->orderBy('name', 'ASC')->all();
         // var_dump($query['data']);
         return $query['data'];
     }
